@@ -1,12 +1,12 @@
-[1109/165242:INFO:WebCore.cpp(74)] Creating the core thread.
-[1109/165242:INFO:WebCore.cpp(84)] Creating the WebCore.
-[1109/165242:INFO:WebCoreProxy.cpp(45)] ICU successfully initialized.
-[1109/165242:INFO:RequestContext.cpp(68)] An invalid or empty cookie path was specified, cookies will be lost on program exit.
-[1109/165242:INFO:RequestContext.cpp(111)] An invalid or empty cache path was specified, cache will be lost on program exit.
-[1109/165242:INFO:WebCoreProxy.cpp(202)] The WebCore is now online.
-[1109/165242:INFO:WebView.cpp(68)] A new WebView has been created.
-[1109/165242:INFO:WebViewProxy.cpp(150)] WebViewProxy[0] has been created.
-[1109/165242:INFO:proxy_service.cc(619)] New proxy configuration was loaded:
+[1109/170725:INFO:WebCore.cpp(74)] Creating the core thread.
+[1109/170725:INFO:WebCore.cpp(84)] Creating the WebCore.
+[1109/170725:INFO:WebCoreProxy.cpp(45)] ICU successfully initialized.
+[1109/170725:INFO:RequestContext.cpp(68)] An invalid or empty cookie path was specified, cookies will be lost on program exit.
+[1109/170725:INFO:RequestContext.cpp(111)] An invalid or empty cache path was specified, cache will be lost on program exit.
+[1109/170725:INFO:WebCoreProxy.cpp(202)] The WebCore is now online.
+[1109/170725:INFO:WebView.cpp(68)] A new WebView has been created.
+[1109/170725:INFO:WebViewProxy.cpp(150)] WebViewProxy[0] has been created.
+[1109/170725:INFO:proxy_service.cc(619)] New proxy configuration was loaded:
 {
   auto_detect: 0
   pac_url: 
@@ -22,3 +22,21 @@
   proxy_bypass_list:
   id: 1
 }
+[1109/170725:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170725:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170725:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170725:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170749:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170749:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170749:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170749:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170749:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170749:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170749:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170749:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170758:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170758:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170758:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170758:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170759:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1109/170759:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null

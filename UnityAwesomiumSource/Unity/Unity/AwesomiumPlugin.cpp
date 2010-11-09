@@ -16,6 +16,8 @@
  */
 
 #include "global.h"
+#include "WebCore.h"
+#include "MyWebViewListener.h"
 
 #if defined(__WIN32__) || defined(_WIN32)
 #include <windows.h>
@@ -23,89 +25,14 @@
 #include <unistd.h>
 #endif
 
-
-#define SLEEP_MS	250
-
-
-
 //Delegates
 //type_def void (*SetPixelsFunc);
 //
 //SetPixelsFunc m_setPixelsFunc;
 
 Awesomium::WebCore* webCore;
+static Awesomium::WebView* webView = 0;
 
-
-
-void saveImageTGA(const std::string& filename, unsigned char* buffer, int width, int height);
-
-class MyWebViewListener : public Awesomium::WebViewListener
-{
-public:
-	
-	MyWebViewListener(float* buf)
-	{
-	}
-	
-	void onBeginNavigation(Awesomium::WebView* caller, const std::string& url, const std::wstring& frameName)
-	{		
-	}
-	
-	void onBeginLoading(Awesomium::WebView* caller, const std::string& url, const std::wstring& frameName, int statusCode, const std::wstring& mimeType)
-	{	
-	}
-	
-	void onFinishLoading(Awesomium::WebView* caller)
-	{		
-		myfile << "OnFinished \n ";		
-		//unsigned char* buffer = new unsigned char[texWidth * texHeight* 4];		
-				
-		//webView->render(buffer, texWidth * 4, 4);
-		//
-		////saveImageTGA(".\\output\\result.tga", buffer, texWidth, texHeight);
-
-		////convertBuffer(buffer,m_buffer);		
-		//	
-		//
-		//delete buffer;	
-	}
-	
-	void onCallback(Awesomium::WebView* caller, const std::wstring& objectName, const std::wstring& callbackName, const Awesomium::JSArguments& args)
-	{
-
-		myfile << "ONCallBack\n ";
-	}
-	
-	void onReceiveTitle(Awesomium::WebView* caller, const std::wstring& title, const std::wstring& frameName)
-	{
-		myfile << "ONRecieveTitile\n ";
-	}
-	
-	void onChangeTooltip(Awesomium::WebView* caller, const std::wstring& tooltip)
-	{
-		
-	}
-	
-#if defined(_WIN32)
-	void onChangeCursor(Awesomium::WebView* caller, const HCURSOR& cursor)
-	{
-	}
-#endif
-	
-	void onChangeKeyboardFocus(Awesomium::WebView* caller, bool isFocused)
-	{
-	}
-	
-	void onChangeTargetURL(Awesomium::WebView* caller, const std::string& url)
-	{
-	}
-
-	void onOpenExternalLink(Awesomium::WebView* caller, const std::string& url, const std::wstring& source)
-	{
-	}
-
-
-};
 
 
 
@@ -161,41 +88,35 @@ extern "C" __declspec(dllexport) void init(float* buffer, int width, int height)
 								 Awesomium::PF_RGBA,
                                  "");
 	
-	webView = webCore->createWebView(texWidth, texHeight);
-	MyWebViewListener *myListener = new MyWebViewListener(m_buffer);	
+	webView = webCore->createWebView(texWidth, texHeight,true);
+	MyWebViewListener *myListener = new MyWebViewListener();	
 	webView->setListener(myListener);	
 	
-	gotoURL(URL);
-	//webView->loadURL(URL);	
+	gotoURL(URL);	
+}
+PLUGIN_API void gotoURL(char* url){
+	webView->loadURL(url);
 }
 
 PLUGIN_API void update(){	
 	
 	webCore->update();	
 
-	if (webView->isDirty()){				
-		
+	if (webView->isDirty()){			
+		// Create buffer for drawing
 		unsigned char* buffer = new unsigned char[texWidth * texHeight* 4];		
-				
+		// Render webview to buffer				
 		webView->render(buffer, texWidth * 4, 4);
 		// Convert and copy rendered Awesomium pixel buffer to our float buffer
 		convertBuffer(buffer,m_buffer);
 		// Set flag for rerendering 
 		dirtyBuffer  = true;
 		delete buffer;		
-
 	}
-
 }
 
 
-PLUGIN_API void gotoURL(char* url){
-	std::ofstream testFile("NavigationLog.log",std::ios_base::app);
-	testFile << url << "\n";
-	testFile.close();
-	webView->loadURL(url);
 
-}
 
 /**
 * wrap mouse functions function
@@ -235,14 +156,11 @@ PLUGIN_API void mouseMove(int x,int y){
 /**
 * wrap scrollwheel function
 **/
-PLUGIN_API void scrollWheel(int amount){
-	//webView->focus();
-	webView->injectMouseWheel(amount);
-	myfile << "scrolling: " << amount << " \n";
+PLUGIN_API void scrollWheel(int amount){	
+	webView->injectMouseWheel(amount);	
 }
 
 // End mouse functions
-
 
 /**
 * Closing logfilestream

@@ -182,6 +182,10 @@
 				RelativePath=".\AwesomiumPlugin.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\MyWebViewListener.cpp"
+				>
+			</File>
 			<Filter
 				Name="Resource Files"
 				Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
@@ -196,6 +200,10 @@
 			>
 			<File
 				RelativePath=".\global.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MyWebViewListener.h"
 				>
 			</File>
 		</Filter>
