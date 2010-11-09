@@ -1,5 +1,5 @@
-Unity texture width: 512
-Unity texture height: 512
+Unity texture width: 500
+Unity texture height: 500
 m_buffer size (sizeof): 4ONBEginNavi
  update
 ONBEginNavi
@@ -17,9 +17,36 @@ update
 update
 update
 update
-update
-update
-update
 OnFinished 
  4
-Size of buffer after delete: 4
+Size of buffer after delete: 4scrolling: -100 
+update
+scrolling: -100 
+update
+scrolling: -300 
+update
+scrolling: -100 
+update
+scrolling: -100 
+update
+scrolling: -400 
+update
+scrolling: -100 
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update

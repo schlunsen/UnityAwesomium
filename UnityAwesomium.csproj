@@ -52,15 +52,15 @@
      <Compile Include="Assets\AwesomiumWrapper\AwesomiumMeshRender.cs" />
      <Compile Include="Assets\AwesomiumWrapper\AwesomiumWrapper.cs" />
      <Compile Include="Assets\AwesomiumWrapper\BrowserGUIEvents.cs" />
+     <Compile Include="Assets\GUI\ControlWindow.cs" />
+     <Compile Include="Assets\GUI\HUDFPS.cs" />
      <None Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" />
      <None Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
      <None Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\PlatformInputController.js" />
      <None Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js" />
      <None Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js" />
-     <Compile Include="Assets\Utils\HUDFPS.cs" />
      <Compile Include="Assets\Utils\iTween.cs" />
-     <Compile Include="Assets\ControlWindow.cs" />
  <Reference Include="Awesomium">
  <HintPath>Assets\Plugins\Awesomium.dll</HintPath>
  </Reference>
