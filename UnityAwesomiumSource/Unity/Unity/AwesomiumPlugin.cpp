@@ -48,39 +48,26 @@ public:
 	}
 	
 	void onBeginNavigation(Awesomium::WebView* caller, const std::string& url, const std::wstring& frameName)
-	{
-		myfile << "ONBEginNavi\n ";
-		std::cout << "Navigating to URL: " << url << std::endl;
+	{		
 	}
 	
 	void onBeginLoading(Awesomium::WebView* caller, const std::string& url, const std::wstring& frameName, int statusCode, const std::wstring& mimeType)
-	{
-		myfile << "ONBEginLoading\n ";		
+	{	
 	}
 	
 	void onFinishLoading(Awesomium::WebView* caller)
 	{		
 		myfile << "OnFinished \n ";		
-		unsigned char* buffer = new unsigned char[texWidth * texHeight* 4];		
+		//unsigned char* buffer = new unsigned char[texWidth * texHeight* 4];		
 				
-		webView->render(buffer, texWidth * 4, 4);
-		
-		//saveImageTGA(".\\output\\result.tga", buffer, texWidth, texHeight);
+		//webView->render(buffer, texWidth * 4, 4);
+		//
+		////saveImageTGA(".\\output\\result.tga", buffer, texWidth, texHeight);
 
-		//convertBuffer(buffer,m_buffer);
-		
-		myfile << sizeof(m_buffer) << "\n";
-			
-			
-		
-		delete buffer;
-
-		myfile << "Size of buffer after delete: " << sizeof(buffer);
-		
-		std::cout << "Saved a render of the page to 'result.tga'." << std::endl;		
-		//system("pause");
-		
-	
+		////convertBuffer(buffer,m_buffer);		
+		//	
+		//
+		//delete buffer;	
 	}
 	
 	void onCallback(Awesomium::WebView* caller, const std::wstring& objectName, const std::wstring& callbackName, const Awesomium::JSArguments& args)
@@ -121,51 +108,6 @@ public:
 };
 
 
-
-// Templated helper utility to write binary to stream
-template<class T>
-void writeVal(std::ofstream& destination, T value)
-{
-	destination.write(reinterpret_cast<char*>(&value), sizeof(T));
-}
-
-// Utility function that saves a TGA Image from a BGRA buffer
-void saveImageTGA(const std::string& filename, unsigned char* buffer, int width, int height)
-{
-	
-	std::ofstream out(filename.c_str(), std::ios_base::binary);
-	
-	if(out.bad())
-	{
-		std::cerr << "Could not save image." << std::endl;
-		out.close();
-		return;
-	}
-	
-	// Write TGA Header
-	writeVal<char>(out, 0);
-	writeVal<char>(out, 0);
-	writeVal<char>(out, 2);         // compressed RGBA
-	writeVal<short>(out, 0);
-	writeVal<short>(out, 0);
-	writeVal<char>(out, 0);
-	writeVal<short>(out, 0);        // x origin
-	writeVal<short>(out, 0);        // y origin
-	writeVal<short>(out, width);    // width
-	writeVal<short>(out, height);   // height
-	writeVal<char>(out, 32);        // 32 BPP
-	writeVal<char>(out, 0);
-	
-	int rowSpan = width * 4;
-	
-	// Write Image Data
-	for(int row = height - 1; row >= 0; row--){
-		//myfile.write( reinterpret_cast<char*>((buffer + row * rowSpan)), rowSpan);
-		out.write(reinterpret_cast<char*>(buffer + row * rowSpan), rowSpan);
-	}
-	
-	out.close();
-}
 
 /**
 * Convert unsigned char buffer to float buffer
@@ -227,26 +169,20 @@ extern "C" __declspec(dllexport) void init(float* buffer, int width, int height)
 	//webView->loadURL(URL);	
 }
 
-PLUGIN_API void update(){		
+PLUGIN_API void update(){	
 	
-	webCore->update();
-	
+	webCore->update();	
 
-	if (webView->isDirty()){		
-		
-
-		myfile << "update\n";
+	if (webView->isDirty()){				
 		
 		unsigned char* buffer = new unsigned char[texWidth * texHeight* 4];		
 				
 		webView->render(buffer, texWidth * 4, 4);
-
+		// Convert and copy rendered Awesomium pixel buffer to our float buffer
 		convertBuffer(buffer,m_buffer);
+		// Set flag for rerendering 
 		dirtyBuffer  = true;
-
-		delete buffer;
-
-		// Call setpixels and apply functions
+		delete buffer;		
 
 	}
 
@@ -273,7 +209,6 @@ PLUGIN_API void mouseDown(int mouseButton){
 		case 1:
 		webView->injectMouseDown(Awesomium::RIGHT_MOUSE_BTN);
 		break;
-
 	}
 	
 }
@@ -287,7 +222,6 @@ PLUGIN_API void mouseUp(int mouseButton){
 		case 1:
 		webView->injectMouseUp(Awesomium::RIGHT_MOUSE_BTN);
 		break;
-
 	}
 	
 }
@@ -297,8 +231,6 @@ PLUGIN_API void mouseMove(int x,int y){
 	//webView->focus();
 	webView->injectMouseMove(x,y);		
 }
-
-
 
 /**
 * wrap scrollwheel function

@@ -9,12 +9,13 @@ public class ControlWindow : MonoBehaviour
     private int controlWindowId = 1;
     private Rect controlWinRect = new Rect(0, 0, 300, 300);
     private string txtString = "http://www.dr.dk";
-
+    private Vector3 startPosition;
     public GameObject gui;
 
     // Use this for initialization
     void Start()
-    {        
+    {
+        startPosition = gui.transform.position;
     }
 
     // Update is called once per frame
@@ -41,7 +42,12 @@ public class ControlWindow : MonoBehaviour
     {
 
         GUILayout.BeginHorizontal();
+        GUI.SetNextControlName("urlInputField");
+        
         txtString = GUILayout.TextField(txtString);
+
+        if (Event.current.isKey && Event.current.keyCode == KeyCode.Return && GUI.GetNameOfFocusedControl() == "urlInputField")
+            AwesomiumWrapper.gotoURL(txtString);
 
         if (GUILayout.Button("Go"))
         {
@@ -63,11 +69,12 @@ public class ControlWindow : MonoBehaviour
     private void fadeUpButton()
     {
 
-        if (GUILayout.Button("Fade Up Browser"))
+        if (GUILayout.Button("Show Browser"))
         {
             showBrowser = true;
-            iTween.FadeTo(gui, 1, 1);
-
+            //iTween.Stop(gui);
+            iTween.MoveTo(gui, iTween.Hash("position", startPosition, "time", 2f));
+            iTween.FadeTo(gui.gameObject, 1, 1);
         }
 
 
@@ -75,10 +82,12 @@ public class ControlWindow : MonoBehaviour
 
     private void fadeDownButton()
     {
-        if (GUILayout.Button("Fade Down Browser"))
+        if (GUILayout.Button("Hide Browser"))
         {
+            //startPosition = gameObject.transform.position;
             showBrowser = false;
-            iTween.FadeTo(gui, 0, 1);
+            iTween.FadeTo(gui.gameObject, 0, 1);
+            iTween.MoveAdd(gui, new Vector3(20,0,0),2);
 
         }
     }

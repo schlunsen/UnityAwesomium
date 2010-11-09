@@ -1,0 +1,25 @@
+Unity texture width: 512
+Unity texture height: 512
+m_buffer size (sizeof): 4ONBEginNavi
+ update
+ONBEginNavi
+ ONBEginLoading
+ ONRecieveTitile
+ update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+update
+OnFinished 
+ 4
+Size of buffer after delete: 4

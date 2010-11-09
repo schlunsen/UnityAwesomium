@@ -58,7 +58,7 @@ public class BrowserGUIEvents : MonoBehaviour
             AwesomiumWrapper.mouseMove(x, y);
             AwesomiumWrapper.mouseDown(0);            
 
-            Debug.Log("x " + x + " y: " + y);
+       
         }
     }
 
@@ -67,7 +67,7 @@ public class BrowserGUIEvents : MonoBehaviour
         // Only when interactive is enabled
         if (!interactive)
             return;
-
+        Debug.Log("Mouse up 1");
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {
@@ -94,8 +94,11 @@ public class BrowserGUIEvents : MonoBehaviour
         {
             
             int x = /*width -*/ (int)(hit.textureCoord.x * width);
-            int y = height - (int)(hit.textureCoord.y * height);            
+            int y = height - (int)(hit.textureCoord.y * height);
+            Debug.Log("x " + x + " y: " + y + " width:" + width);
             AwesomiumWrapper.mouseMove(x, y);
+
+            
         }
     }
 

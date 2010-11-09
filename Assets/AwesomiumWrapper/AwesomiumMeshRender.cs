@@ -48,14 +48,9 @@ public class AwesomiumMeshRender : MonoBehaviour
         //m_applyPixelsFunction = this.ApplyPixels;
         //AwesomiumWrapper.SetDelegates(m_setPixelsFunction, m_applyPixelsFunction);
 
-        initAwesomium();
-
-    }
-
-    private void initAwesomium()
-    {
         isInit = true;
         AwesomiumWrapper.init(m_pixelsHandler.AddrOfPinnedObject(), width, height);       
+
     }
 
 
