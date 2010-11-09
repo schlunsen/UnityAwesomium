@@ -1,12 +1,12 @@
-[1109/101723:INFO:WebCore.cpp(74)] Creating the core thread.
-[1109/101723:INFO:WebCore.cpp(84)] Creating the WebCore.
-[1109/101723:INFO:WebCoreProxy.cpp(45)] ICU successfully initialized.
-[1109/101723:INFO:RequestContext.cpp(68)] An invalid or empty cookie path was specified, cookies will be lost on program exit.
-[1109/101723:INFO:RequestContext.cpp(111)] An invalid or empty cache path was specified, cache will be lost on program exit.
-[1109/101723:INFO:WebCoreProxy.cpp(202)] The WebCore is now online.
-[1109/101723:INFO:WebView.cpp(68)] A new WebView has been created.
-[1109/101723:INFO:WebViewProxy.cpp(150)] WebViewProxy[0] has been created.
-[1109/101723:INFO:proxy_service.cc(619)] New proxy configuration was loaded:
+[1109/115410:INFO:WebCore.cpp(74)] Creating the core thread.
+[1109/115410:INFO:WebCore.cpp(84)] Creating the WebCore.
+[1109/115410:INFO:WebCoreProxy.cpp(45)] ICU successfully initialized.
+[1109/115410:INFO:RequestContext.cpp(68)] An invalid or empty cookie path was specified, cookies will be lost on program exit.
+[1109/115410:INFO:RequestContext.cpp(111)] An invalid or empty cache path was specified, cache will be lost on program exit.
+[1109/115410:INFO:WebCoreProxy.cpp(202)] The WebCore is now online.
+[1109/115410:INFO:WebView.cpp(68)] A new WebView has been created.
+[1109/115410:INFO:WebViewProxy.cpp(150)] WebViewProxy[0] has been created.
+[1109/115410:INFO:proxy_service.cc(619)] New proxy configuration was loaded:
 {
   auto_detect: 0
   pac_url: 
