@@ -53,18 +53,20 @@ public class AwesomiumWrapper {
 
     // end Mouse func
     
+    // Key func
+    [DllImport("UnityAwesomium")]
+    public static extern void injectKeyboard(int msg, uint wParam, long lParam);
 
 
-    //[DllImport("UnityAwesomium")]
-    //public static extern void SetDelegates(SetPixelsFunc setPixelsFunc, ApplyPixelsFunc applyPixelsFunc);
+    
 
 
-    public class Window
-    {
-        [DllImport("UnityAwesomium")]
-        public static extern void update();
+    //public class Window
+    //{
+    //    [DllImport("UnityAwesomium")]
+    //    public static extern void update();
 
 
-    }
+    //}
 
 }

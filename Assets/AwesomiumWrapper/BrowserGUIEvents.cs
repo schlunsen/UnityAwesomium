@@ -5,18 +5,52 @@ public class BrowserGUIEvents : MonoBehaviour
 {
 
     public bool interactive = true;
-    public int width, height;
+    private int width, height;
 
     private string output;
 
     private bool mouseOver = false;
+    public AwesomiumMeshRender mesh;
 
     void Start()
     {
-
+        width = mesh.width;
+        height = mesh.height;
         
     }
 
+    void OnGUI()
+    {
+        // Inject input into the page when the GUI doesn't have focus
+        if (Event.current.isKey && GUIUtility.keyboardControl == 0)
+        {
+            // Insert character
+            Debug.Log(Event.current.keyCode);
+            AwesomiumWrapper.injectKeyboard((int)Event.current.keyCode, 2, 0);
+        
+            
+            
+            //UnityBerkelium.Window.textEvent(m_TextureID, Event.current.character);
+
+            //KeyCode key = Event.current.keyCode;
+            //bool pressed = (Event.current.type == EventType.KeyDown);
+
+            //// Special case for backspace
+            //if (key == KeyCode.Backspace)
+            //    UnityBerkelium.Window.keyEvent(m_TextureID, pressed, 0, 08, 0);
+            //// Special case for enter
+            //else if (key == KeyCode.Return)
+            //    UnityBerkelium.Window.keyEvent(m_TextureID, pressed, 0, 13, 0);
+
+            // TODO Handle all keys
+            /*int mods = 0;
+            int vk_code = UnityBerkelium.convertKeyCode(Event.current.keyCode);
+            int scancode = 0;
+            UnityBerkelium.Window.keyEvent(m_TextureID, pressed, mods, vk_code, scancode);
+            print("Key event: " + pressed + ", " + Event.current.keyCode);*/
+        }
+
+    }
 
     void Update()
     {
@@ -50,15 +84,10 @@ public class BrowserGUIEvents : MonoBehaviour
         {           
 
             int x = /*width -*/ (int)(hit.textureCoord.x * width);
-            int y = height - (int)(hit.textureCoord.y * height);
-
-            // Focus the window
-            //UnityBerkelium.Window.focus(m_TextureID);
+            int y = height - (int)(hit.textureCoord.y * height);            
 
             AwesomiumWrapper.mouseMove(x, y);
-            AwesomiumWrapper.mouseDown(0);            
-
-       
+            AwesomiumWrapper.mouseDown(0);                   
         }
     }
 
@@ -78,8 +107,7 @@ public class BrowserGUIEvents : MonoBehaviour
             AwesomiumWrapper.mouseUp(0);
         }
     }
-    //UnityBerkelium.Window.mouseMove(m_TextureID, x, y);
-    //UnityBerkelium.Window.mouseUp(m_TextureID, 0);
+    
 
     void OnMouseOver()
     {
@@ -91,14 +119,10 @@ public class BrowserGUIEvents : MonoBehaviour
       
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-        {
-            
+        {            
             int x = /*width -*/ (int)(hit.textureCoord.x * width);
             int y = height - (int)(hit.textureCoord.y * height);
-            Debug.Log("x " + x + " y: " + y + " width:" + width);
-            AwesomiumWrapper.mouseMove(x, y);
-
-            
+            AwesomiumWrapper.mouseMove(x, y);           
         }
     }
 

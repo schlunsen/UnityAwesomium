@@ -7,7 +7,7 @@ public class ControlWindow : MonoBehaviour
     public bool showBrowser = true;
     //Window releated;
     private int controlWindowId = 1;
-    private Rect controlWinRect = new Rect(0, 0, 300, 300);
+    private Rect controlWinRect = new Rect(0, 0, 300, 150);
     private string txtString = "http://www.dr.dk";
     private Vector3 startPosition;
     public GameObject gui;

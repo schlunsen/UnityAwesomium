@@ -143,7 +143,7 @@ extern "C" __declspec(dllexport) void init(float* buffer, int width, int height)
 								 Awesomium::PF_RGBA,
                                  "");
 	
-	webView = webCore->createWebView(texWidth, texHeight,true);
+	webView = webCore->createWebView(texWidth, texHeight);
 	MyWebViewListener *myListener = new MyWebViewListener(m_buffer);	
 	webView->setListener(myListener);		
 	webView->loadURL(URL);	
@@ -171,6 +171,14 @@ PLUGIN_API void update(){
 
 PLUGIN_API void gotoURL(char* url){	
 	webView->loadURL(url);
+	
+}
+
+/**
+* Keyboard wrapping
+**/
+PLUGIN_API void injectKeyboard(int msg, int wParam, long lParam){
+	webView->injectKeyboardEvent(Awesomium::WebKeyboardEvent(msg,wParam,lParam));
 }
 
 /**
@@ -211,10 +219,8 @@ PLUGIN_API void mouseMove(int x,int y){
 /**
 * wrap scrollwheel function
 **/
-PLUGIN_API void scrollWheel(int amount){
-	//webView->focus();
-	webView->injectMouseWheel(amount);
-	myfile << "scrolling: " << amount << " \n";
+PLUGIN_API void scrollWheel(int amount){	
+	webView->injectMouseWheel(amount);	
 }
 
 // End mouse functions
