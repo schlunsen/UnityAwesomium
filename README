@@ -1,5 +1,7 @@
 Unity wrapper for the Awesomium lilbrary. Still in development!
 
+For editor usage copy icudt38.dll and Awesomium.dll from Assets/Plugins folder 
+to your unity Editor folder in Program Files.
 
 Folder explanation:
 build/ - Test build of Unity application using awesomium
@@ -7,15 +9,10 @@ Assets/ - Unity project assets and scripts
 UnityAwesomiumSource/ - C/C++ wrapper for usage in Unity application
 
 Issues
-
-	* Scrolling currently working with up/down keys
+	* Scrolling currently working with up/down keys and scrollwheel
 	* Mouse not working - Need mouse to guitexture coordinates
-	* Code UnityAwe
-	
 
-
-Future Goals
-
+Future Goals	
 	* Mouse support 
 	* Refactoring 
 	* Support for mulitple views
