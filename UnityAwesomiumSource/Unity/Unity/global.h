@@ -5,6 +5,8 @@
 #include <fstream>
 #include <time.h>
 
+#define URL	"http://version2.dk/"
+
 // unity float buffer ~ m_pixels in unity (Pointer to Color[] ??)
 float* m_buffer;
 
