@@ -8,11 +8,10 @@ build/ - Test build of Unity application using awesomium
 Assets/ - Unity project assets and scripts
 UnityAwesomiumSource/ - C/C++ wrapper for usage in Unity application
 
-Issues
-	* Scrolling currently working with up/down keys and scrollwheel
-	* Mouse not working - Need mouse to guitexture coordinates
+Dirty flash hack support:
+For flash support make sure you have installed firefox with flash 
 
 Future Goals	
-	* Mouse support 
+	* Keyboard support
 	* Refactoring 
-	* Support for mulitple views
+	* Support for mulitple views ( Support for multiple awesomium webviews )
