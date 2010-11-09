@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+
+Project("{817257D8-9731-BEDB-ECAC-A1439DCD93D8}") = "UnityAwesomium", "UnityAwesomium.csproj", "{C5F82812-341B-CF0A-A416-A535D3D81511}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5F82812-341B-CF0A-A416-A535D3D81511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5F82812-341B-CF0A-A416-A535D3D81511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5F82812-341B-CF0A-A416-A535D3D81511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5F82812-341B-CF0A-A416-A535D3D81511}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	
+EndGlobal
