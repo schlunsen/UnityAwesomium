@@ -1,0 +1,21 @@
+Unity wrapper for the Awesomium lilbrary. Still in development!
+
+
+Folder explanation:
+build/ - Test build of Unity application using awesomium
+Assets/ - Unity project assets and scripts
+UnityAwesomiumSource/ - C/C++ wrapper for usage in Unity application
+
+Issues
+
+	* Scrolling currently working with up/down keys
+	* Mouse not working - Need mouse to guitexture coordinates
+	* Code UnityAwe
+	
+
+
+Future Goals
+
+	* Mouse support 
+	* Refactoring 
+	* Support for mulitple views
