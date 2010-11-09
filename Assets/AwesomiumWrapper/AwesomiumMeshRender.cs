@@ -20,6 +20,7 @@ public class AwesomiumMeshRender : MonoBehaviour
 
     private bool isInit;
 
+    private ControlWindow controlWindow;
 
     private AwesomiumWrapper.SetPixelsFunc m_setPixelsFunction;
     private AwesomiumWrapper.ApplyPixelsFunc m_applyPixelsFunction;
@@ -28,7 +29,7 @@ public class AwesomiumMeshRender : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        controlWindow = GameObject.Find("ControlWindow").GetComponent<ControlWindow>();
         //gui = GetComponent(typeof(GUITexture)) as GUITexture;
         // Center texture
         //gui.pixelInset = new Rect(-(gui.pixelInset.width / 2), -gui.pixelInset.height / 2, gui.pixelInset.width, gui.pixelInset.height);
@@ -58,7 +59,7 @@ public class AwesomiumMeshRender : MonoBehaviour
     void Update()
     {
 
-        if (isInit == true && showBrowser)
+        if (isInit == true && controlWindow.showBrowser)
         {
             AwesomiumWrapper.update();
             // Check to see if render flag is set in unmanaged code. Need changing to delegates instead

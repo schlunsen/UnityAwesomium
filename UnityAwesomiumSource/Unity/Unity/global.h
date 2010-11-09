@@ -17,17 +17,11 @@ int texWidth;
 int texHeight;
 std::ofstream myfile(".\\output\\testDBG.txt");
 
-//PLUGIN_API void init(float* buffer, int width, int height);
-
-
-std::string WStringToString(const std::wstring& s)
-{
-	std::string temp(s.length(), ' ');
-	std::copy(s.begin(), s.end(), temp.begin());
-	return temp; 
-}
 
 
 
 
-PLUGIN_API void gotoURL(char* url);
+
+
+
+

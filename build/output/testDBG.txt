@@ -1,52 +1,7 @@
 Unity texture width: 500
 Unity texture height: 500
-m_buffer size (sizeof): 4ONBEginNavi
- update
-ONBEginNavi
- ONBEginLoading
- ONRecieveTitile
- update
-update
-update
-update
-update
-update
-update
-update
-update
-update
-update
-update
-OnFinished 
- 4
-Size of buffer after delete: 4scrolling: -100 
-update
-scrolling: -100 
-update
-scrolling: -300 
-update
-scrolling: -100 
-update
-scrolling: -100 
-update
-scrolling: -400 
-update
-scrolling: -100 
-update
-update
-update
-update
-update
-update
-update
-update
-update
-update
-update
-update
-update
-update
-update
-update
-update
-update
+m_buffer size (sizeof): 4scrolling: 100 
+scrolling: 300 
+scrolling: 100 
+scrolling: 100 
+scrolling: 300 

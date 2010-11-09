@@ -36,9 +36,6 @@
 Awesomium::WebCore* webCore;
 
 
-
-void saveImageTGA(const std::string& filename, unsigned char* buffer, int width, int height);
-
 class MyWebViewListener : public Awesomium::WebViewListener
 {
 public:
@@ -56,34 +53,19 @@ public:
 	}
 	
 	void onFinishLoading(Awesomium::WebView* caller)
-	{		
-		myfile << "OnFinished \n ";		
-		//unsigned char* buffer = new unsigned char[texWidth * texHeight* 4];		
-				
-		//webView->render(buffer, texWidth * 4, 4);
-		//
-		////saveImageTGA(".\\output\\result.tga", buffer, texWidth, texHeight);
-
-		////convertBuffer(buffer,m_buffer);		
-		//	
-		//
-		//delete buffer;	
+	{				
 	}
 	
 	void onCallback(Awesomium::WebView* caller, const std::wstring& objectName, const std::wstring& callbackName, const Awesomium::JSArguments& args)
-	{
-
-		myfile << "ONCallBack\n ";
+	{		
 	}
 	
 	void onReceiveTitle(Awesomium::WebView* caller, const std::wstring& title, const std::wstring& frameName)
-	{
-		myfile << "ONRecieveTitile\n ";
+	{	
 	}
 	
 	void onChangeTooltip(Awesomium::WebView* caller, const std::wstring& tooltip)
-	{
-		
+	{		
 	}
 	
 #if defined(_WIN32)
@@ -161,12 +143,10 @@ extern "C" __declspec(dllexport) void init(float* buffer, int width, int height)
 								 Awesomium::PF_RGBA,
                                  "");
 	
-	webView = webCore->createWebView(texWidth, texHeight);
+	webView = webCore->createWebView(texWidth, texHeight,true);
 	MyWebViewListener *myListener = new MyWebViewListener(m_buffer);	
-	webView->setListener(myListener);	
-	
-	gotoURL(URL);
-	//webView->loadURL(URL);	
+	webView->setListener(myListener);		
+	webView->loadURL(URL);	
 }
 
 PLUGIN_API void update(){	
@@ -174,9 +154,9 @@ PLUGIN_API void update(){
 	webCore->update();	
 
 	if (webView->isDirty()){				
-		
+		// Create pixel buffer 
 		unsigned char* buffer = new unsigned char[texWidth * texHeight* 4];		
-				
+		// render to pixel buffer				
 		webView->render(buffer, texWidth * 4, 4);
 		// Convert and copy rendered Awesomium pixel buffer to our float buffer
 		convertBuffer(buffer,m_buffer);
@@ -189,12 +169,8 @@ PLUGIN_API void update(){
 }
 
 
-PLUGIN_API void gotoURL(char* url){
-	std::ofstream testFile("NavigationLog.log",std::ios_base::app);
-	testFile << url << "\n";
-	testFile.close();
+PLUGIN_API void gotoURL(char* url){	
 	webView->loadURL(url);
-
 }
 
 /**
