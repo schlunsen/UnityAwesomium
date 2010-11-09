@@ -1,0 +1,33 @@
+[1106/190821:INFO:WebCore.cpp(74)] Creating the core thread.
+[1106/190821:INFO:WebCore.cpp(84)] Creating the WebCore.
+[1106/190821:INFO:WebCoreProxy.cpp(45)] ICU successfully initialized.
+[1106/190821:INFO:WebView.cpp(68)] A new WebView has been created.
+[1106/190821:INFO:RequestContext.cpp(68)] An invalid or empty cookie path was specified, cookies will be lost on program exit.
+[1106/190821:INFO:RequestContext.cpp(111)] An invalid or empty cache path was specified, cache will be lost on program exit.
+[1106/190821:INFO:WebCoreProxy.cpp(202)] The WebCore is now online.
+[1106/190821:INFO:WebViewProxy.cpp(150)] WebViewProxy[0] has been created.
+[1106/190821:INFO:proxy_service.cc(619)] New proxy configuration was loaded:
+{
+  auto_detect: 0
+  pac_url: 
+  proxy_rules:
+  {
+    type: TYPE_NO_RULES
+    single_proxy: 
+    proxy_for_http: 
+    proxy_for_https: 
+    proxy_for_ftp: 
+  }
+  proxy_bypass_local_names: 0
+  proxy_bypass_list:
+  id: 1
+}
+[1106/190823:INFO:WebViewProxy.cpp(172)] WebViewProxy[0]::asyncShutdown, refCount is 2
+[1106/190823:INFO:WebViewProxy.cpp(132)] WebViewProxy[0] has been destroyed.
+[1106/190823:INFO:WebView.cpp(83)] A WebView has been destroyed.
+[1106/190823:INFO:WebCore.cpp(109)] Releasing the WebCore soon.
+[1106/190823:INFO:WebCore.cpp(111)] Destroying the core thread.
+[1106/190823:INFO:WebCoreProxy.cpp(57)] Destroying the WebCore.
+[1106/190823:INFO:WebCoreProxy.cpp(71)] Shutting down Resource Loader Bridge.
+[1106/190823:INFO:WebCore.cpp(113)] The core thread has been destroyed.
+[1106/190823:INFO:WebCore.cpp(118)] The WebCore has been shutdown.

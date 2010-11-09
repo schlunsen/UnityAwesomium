@@ -1,0 +1,16 @@
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\Irrelvant.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\Irrelvant.pdb
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\Boo.Lang.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\UnityEditor.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\UnityEngine.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\UnityScript.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\nunit.framework.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\Boo.Lang.Compiler.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\Boo.Lang.PatternMatching.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\Mono.Security.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\Boo.Lang.Useful.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\UnityScript.Lang.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\Temp\bin\Debug\Boo.Lang.Parser.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\kamante\Documents\UnityAwesomiumProject\obj\Debug\Irrelvant.dll
+C:\Users\kamante\Documents\UnityAwesomiumProject\obj\Debug\Irrelvant.pdb
