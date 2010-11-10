@@ -1,336 +1,49 @@
-Mono path[0] = 'C:/Users/kamante/Desktop/UAMaster/UnityAwesomium/build/test_Data/Managed'
-Mono path[1] = 'C:/Users/kamante/Desktop/UAMaster/UnityAwesomium/build/test_Data/Mono'
+Mono path[0] = 'C:/Users/ramo/Desktop/V3S/UnityAwesomium/build/test_Data/Managed'
+Mono path[1] = 'C:/Users/ramo/Desktop/V3S/UnityAwesomium/build/test_Data/Mono'
 Direct3D:
-    Version:  Direct3D 9.0c [aticfx32.dll 8.17.10.1041]
-    Renderer: ATI Radeon HD 4290
-    Vendor:   ATI
-    VRAM:     624 MB
-    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 DF24=1 INTZ=0 RAWZ=0 NULL=0 RESZ=1 SlowINTZ=1
+    Version:  Direct3D 9.0c [nvd3dum.dll 8.17.11.9745]
+    Renderer: NVIDIA GeForce GT 220  
+    Vendor:   NVIDIA
+    VRAM:     1024 MB
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
 <I> Initializing (RawInput).
 <RI> Input initialized.
-desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
-Non platform assembly: data-02FCF678 (this message is harmless)
-Non platform assembly: data-030319B0 (this message is harmless)
-Non platform assembly: data-03034220 (this message is harmless)
-Non platform assembly: data-03048890 (this message is harmless)
-Mousedown
+desktop: 1680x1050 60Hz; virtual: 1680x1050 at 0,0
+Non platform assembly: data-030E5708 (this message is harmless)
+Non platform assembly: data-03147AF8 (this message is harmless)
+Non platform assembly: data-0314A368 (this message is harmless)
+Non platform assembly: data-06B20048 (this message is harmless)
+init awseomium
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseDown()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
+AwesomiumMeshRender:InitAwesomium(Int32, Int32)
+AwesomiumMeshRender:Start()
  
 (Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
 
-Mouse up 1
+System.EntryPointNotFoundException: Destroy
+  at (wrapper managed-to-native) AwesomiumWrapper:Destroy ()
+  at AwesomiumMeshRender.DestroyAwesomium () [0x00000] in <filename unknown>:0 
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
+AwesomiumMeshRender:DestroyAwesomium()
+ControlWindow:drawDestroyInitComponents()
+ControlWindow:DrawTopLeft()
+ControlWindow:ControlWindowFunc(Int32)
+UnityEngine._Window:Do()
+UnityEngine.GUI:BeginWindows(Event, Int32, IDList, Int32)
  
 (Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
 
-Mouse up
+init awseomium
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mousedown
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseDown()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up 1
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mousedown
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseDown()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up 1
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mousedown
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseDown()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up 1
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mousedown
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseDown()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up 1
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mousedown
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseDown()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up 1
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mousedown
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseDown()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up 1
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mousedown
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseDown()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up 1
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-LeftAlt
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnGUI()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-LeftAlt
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnGUI()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-LeftAlt
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnGUI()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mousedown
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseDown()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up 1
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mousedown
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseDown()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up 1
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
- 
-(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
-
-Mouse up
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-BrowserGUIEvents:OnMouseUp()
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.MouseOverPair:SendMessage(String)
-UnityEngine.SendMouseEvents:DoSendMouseEvents()
+AwesomiumMeshRender:InitAwesomium(Int32, Int32)
+ControlWindow:drawDestroyInitComponents()
+ControlWindow:DrawTopLeft()
+ControlWindow:ControlWindowFunc(Int32)
+UnityEngine._Window:Do()
+UnityEngine.GUI:BeginWindows(Event, Int32, IDList, Int32)
  
 (Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2535)
 

@@ -1,14 +1,13 @@
-[1110/002242:INFO:WebCore.cpp(74)] Creating the core thread.
-[1110/002242:INFO:WebCore.cpp(84)] Creating the WebCore.
-[1110/002242:INFO:WebCoreProxy.cpp(45)] ICU successfully initialized.
-[1110/002242:INFO:RequestContext.cpp(68)] An invalid or empty cookie path was specified, cookies will be lost on program exit.
-[1110/002242:INFO:RequestContext.cpp(111)] An invalid or empty cache path was specified, cache will be lost on program exit.
-[1110/002242:INFO:WebCoreProxy.cpp(202)] The WebCore is now online.
-[1110/002242:INFO:WebView.cpp(68)] A new WebView has been created.
-[1110/002242:INFO:WebViewProxy.cpp(150)] WebViewProxy[0] has been created.
-[1110/002242:INFO:proxy_service.cc(619)] New proxy configuration was loaded:
+[1110/115120:INFO:WebCore.cpp(74)] Creating the core thread.
+[1110/115120:INFO:WebCore.cpp(84)] Creating the WebCore.
+[1110/115120:INFO:RequestContext.cpp(68)] An invalid or empty cookie path was specified, cookies will be lost on program exit.
+[1110/115120:INFO:RequestContext.cpp(111)] An invalid or empty cache path was specified, cache will be lost on program exit.
+[1110/115120:INFO:WebView.cpp(68)] A new WebView has been created.
+[1110/115120:INFO:WebCoreProxy.cpp(202)] The WebCore is now online.
+[1110/115120:INFO:WebViewProxy.cpp(150)] WebViewProxy[1] has been created.
+[1110/115120:INFO:proxy_service.cc(619)] New proxy configuration was loaded:
 {
-  auto_detect: 0
+  auto_detect: 1
   pac_url: 
   proxy_rules:
   {
@@ -22,5 +21,4 @@
   proxy_bypass_list:
   id: 1
 }
-[1110/002242:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
-[1110/002242:INFO:WebViewProxy.cpp(1343)] WebViewProxy[0]::AddMessageToConsole, there is a Javascript Error in  at line 1. Error message: Uncaught TypeError: Cannot read property 'style' of null
+[1110/115123:ERROR:proxy_resolver_winhttp.cc(94)] WinHttpGetProxyForUrl failed: 12167

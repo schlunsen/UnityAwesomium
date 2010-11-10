@@ -18,9 +18,10 @@ public class AwesomiumMeshRender : MonoBehaviour
 
     private bool showBrowser = true;
 
-    private bool isInit;
+    public bool isAwesomiumInit;
 
     private ControlWindow controlWindow;
+    private BrowserGUIEvents browserEventHandler;
 
     private AwesomiumWrapper.SetPixelsFunc m_setPixelsFunction;
     private AwesomiumWrapper.ApplyPixelsFunc m_applyPixelsFunction;
@@ -29,11 +30,35 @@ public class AwesomiumMeshRender : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        browserEventHandler = GetComponent<BrowserGUIEvents>();
         controlWindow = GameObject.Find("ControlWindow").GetComponent<ControlWindow>();
-        //gui = GetComponent(typeof(GUITexture)) as GUITexture;
-        // Center texture
-        //gui.pixelInset = new Rect(-(gui.pixelInset.width / 2), -gui.pixelInset.height / 2, gui.pixelInset.width, gui.pixelInset.height);
-        // Create texture in ARGB32 format
+        InitAwesomium(width, height);        
+        
+        //// Create texture in ARGB32 format
+        //m_texture = new Texture2D(width, height, TextureFormat.ARGB32, true);
+        ////Get Color[] (pixels) from texture 
+        //m_pixels = m_texture.GetPixels(0);
+        //// Create window handle id - future usage
+        //m_TextureID = m_texture.GetInstanceID();
+        //// assign m_texture to this GUITexture texture
+        //gameObject.renderer.material.mainTexture = m_texture;
+        //// Create GCHandle - Allocation of m_pixels in memory. 
+        //m_pixelsHandler = GCHandle.Alloc(m_pixels, GCHandleType.Pinned);
+
+        ////Map delegates
+        ////m_setPixelsFunction = this.SetPixels;
+        ////m_applyPixelsFunction = this.ApplyPixels;
+        ////AwesomiumWrapper.SetDelegates(m_setPixelsFunction, m_applyPixelsFunction);
+
+        //isAwesomiumInit = true;
+        //AwesomiumWrapper.init(m_pixelsHandler.AddrOfPinnedObject(), width, height);       
+    }
+
+    public void InitAwesomium(int width, int height)
+    {
+        Debug.Log("init awseomium");
+        this.width = width;
+        this.height = height;
         m_texture = new Texture2D(width, height, TextureFormat.ARGB32, true);
         //Get Color[] (pixels) from texture 
         m_pixels = m_texture.GetPixels(0);
@@ -43,23 +68,15 @@ public class AwesomiumMeshRender : MonoBehaviour
         gameObject.renderer.material.mainTexture = m_texture;
         // Create GCHandle - Allocation of m_pixels in memory. 
         m_pixelsHandler = GCHandle.Alloc(m_pixels, GCHandleType.Pinned);
-
-        //Map delegates
-        //m_setPixelsFunction = this.SetPixels;
-        //m_applyPixelsFunction = this.ApplyPixels;
-        //AwesomiumWrapper.SetDelegates(m_setPixelsFunction, m_applyPixelsFunction);
-
-        isInit = true;
-        AwesomiumWrapper.init(m_pixelsHandler.AddrOfPinnedObject(), width, height);       
-
+        AwesomiumWrapper.init(m_pixelsHandler.AddrOfPinnedObject(), width, height);
+        isAwesomiumInit = true;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
-        if (isInit == true && controlWindow.showBrowser)
+        if (isAwesomiumInit == true && controlWindow.showBrowser)
         {
             AwesomiumWrapper.update();
             // Check to see if render flag is set in unmanaged code. Need changing to delegates instead
@@ -69,11 +86,14 @@ public class AwesomiumMeshRender : MonoBehaviour
                 m_texture.Apply();
             }
         }
-        //messy keyhandle - for testing
+        
       
     }
 
-
+    public BrowserGUIEvents getEventHandler()
+    {
+        return browserEventHandler;
+    }
 
 
     void OnApplicationQuit()
@@ -92,6 +112,29 @@ public class AwesomiumMeshRender : MonoBehaviour
     public void ApplyPixels()
     {
 
+    }
+
+    // Methods should be moved to new class
+
+    public void Loadfile(string filePath)
+    {
+        AwesomiumWrapper.loadFile(filePath);
+    }
+
+    public void DestroyAwesomium()
+    {
+        try
+        {            
+            isAwesomiumInit = false;
+            AwesomiumWrapper.Destroy();
+            m_pixelsHandler.Free();
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e);
+        }
+        
+        
     }
 
 

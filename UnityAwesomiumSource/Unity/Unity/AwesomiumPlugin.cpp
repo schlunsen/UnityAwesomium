@@ -1,20 +1,3 @@
-/**
- * This is a simple "Hello World!" example of using Awesomium.
- *
- * It loads a page, renders it once, and saves it to a file.
- *
- * Procedure:
- * -- Create the WebCore singleton
- * -- Create a new WebView and request for it to load a URL.
- * -- Register an event listener to handle notifications from the WebView.
- * -- Continuously loop while calling WebCore::update.
- * -- Upon MyWebViewListener::onFinishLoading:
- * -- -- Render the page to a buffer.
- * -- -- Save the buffer to 'result.tga'.
- * -- -- Change the 'isRunning' flag to 'false' so that the main loop ends.
- * -- Clean up.
- */
-
 #include "global.h"
 
 #if defined(__WIN32__) || defined(_WIN32)
@@ -85,8 +68,6 @@ public:
 	void onOpenExternalLink(Awesomium::WebView* caller, const std::string& url, const std::wstring& source)
 	{
 	}
-
-
 };
 
 
@@ -139,20 +120,25 @@ extern "C" __declspec(dllexport) void init(float* buffer, int width, int height)
                                  L"",
                                  L"",
                                  Awesomium::LOG_VERBOSE,
-                                 true,
+                                 false,
 								 Awesomium::PF_RGBA,
-                                 "");
-	
+                                 "");	
 	webView = webCore->createWebView(texWidth, texHeight);
 	MyWebViewListener *myListener = new MyWebViewListener(m_buffer);	
 	webView->setListener(myListener);		
 	webView->loadURL(URL);	
 }
+bool isDestroying = false;
+PLUGIN_API void Destroy(){	
+	webCore->pause();
+	delete m_buffer;
+	webView->destroy();
+	delete webCore;
+}
+
 
 PLUGIN_API void update(){	
-	
 	webCore->update();	
-
 	if (webView->isDirty()){				
 		// Create pixel buffer 
 		unsigned char* buffer = new unsigned char[texWidth * texHeight* 4];		
@@ -163,16 +149,18 @@ PLUGIN_API void update(){
 		// Set flag for rerendering 
 		dirtyBuffer  = true;
 		delete buffer;		
-
 	}
-
 }
-
 
 PLUGIN_API void gotoURL(char* url){	
-	webView->loadURL(url);
-	
+	webView->loadURL(url);	
 }
+
+PLUGIN_API void loadFile(char* url){	
+	webView->loadFile(url);		
+}
+
+
 
 /**
 * Keyboard wrapping

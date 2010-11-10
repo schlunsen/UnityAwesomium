@@ -19,6 +19,11 @@ public class BrowserGUIEvents : MonoBehaviour
         
     }
 
+    public void setDimensions(int width, int height){
+        this.width = width;
+        this.height = height;
+    }
+
     void OnGUI()
     {
         // Inject input into the page when the GUI doesn't have focus

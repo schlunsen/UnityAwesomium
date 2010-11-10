@@ -17,11 +17,17 @@ public class AwesomiumWrapper {
     public static extern void init(IntPtr m_Pixels, int width, int height);
 
     [DllImport("UnityAwesomium")]
+    public static extern void Destroy();
+
+    [DllImport("UnityAwesomium")]
     public static extern void closeFileStream();
 
 
     [DllImport("UnityAwesomium")]
     public static extern void gotoURL(string url);
+
+    [DllImport("UnityAwesomium")]
+    public static extern void loadFile(string url);
 
 
     [DllImport("UnityAwesomium")]

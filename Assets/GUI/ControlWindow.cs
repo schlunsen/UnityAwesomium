@@ -7,10 +7,15 @@ public class ControlWindow : MonoBehaviour
     public bool showBrowser = true;
     //Window releated;
     private int controlWindowId = 1;
-    private Rect controlWinRect = new Rect(0, 0, 300, 150);
+    private Rect controlWinRect = new Rect(0, 0, 500, 500);
     private string txtString = "http://www.dr.dk";
     private Vector3 startPosition;
     public GameObject gui;
+    public AwesomiumMeshRender meshRender;
+
+
+    private string textWidth = "500", textHeight = "500", loadFileTxt = "html/test.html";
+
 
     // Use this for initialization
     void Start()
@@ -21,26 +26,28 @@ public class ControlWindow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
-
 
     void OnGUI()
     {
-        controlWinRect = GUILayout.Window(controlWindowId, controlWinRect, ControlWindowFunc, "Control window");
+        controlWinRect = GUI.Window(controlWindowId, controlWinRect, ControlWindowFunc, "Control window");
 
     }
 
     public void ControlWindowFunc(int winId)
     {
         GUI.DragWindow(new Rect(0, 0, 500, 25));
-        DrawTopLeft();
+
+        GUILayout.BeginArea(new Rect(0,20,controlWinRect.width ,controlWinRect.height));
+        
+        DrawTopLeft();        
+        
+        GUILayout.EndArea();
 
     }
 
     private void DrawTopLeft()
-    {
-
+    {        
         GUILayout.BeginHorizontal();
         GUI.SetNextControlName("urlInputField");
         
@@ -54,7 +61,8 @@ public class ControlWindow : MonoBehaviour
             AwesomiumWrapper.gotoURL(txtString);
         }
         GUILayout.EndHorizontal();
-
+        GUILayout.Space(4);
+        GUILayout.BeginVertical();
         if (showBrowser)
         {
             fadeDownButton();
@@ -63,8 +71,92 @@ public class ControlWindow : MonoBehaviour
         {
             fadeUpButton();
         }
+        
+        //GUI.SetNextControlName("textWidth");
+        //textWidth = GUILayout.TextField(textWidth, GUILayout.Width(10));
+        GUILayout.EndVertical();
+
+        DrawFileLoad();
+        drawChangeWindowSize();
+        drawDestroyInitComponents();
 
     }
+
+    private void drawDestroyInitComponents()
+    {
+        if (meshRender.isAwesomiumInit)
+        {
+            if (GUILayout.Button("Destroy"))
+            {
+                meshRender.DestroyAwesomium();
+            }
+        }
+        else
+        {
+            if (GUILayout.Button("init"))
+            {
+                try
+                {
+                    int aweWidth = int.Parse(textWidth);
+                    int aweHeight = int.Parse(textHeight);
+                    meshRender.InitAwesomium(aweWidth,aweHeight);
+                }
+                catch (System.Exception)
+                {
+                    Debug.Log("Error parsing width and height");   
+                }               
+            }
+        }
+    }
+
+    private void DrawFileLoad()
+    {
+        GUILayout.BeginVertical();
+
+        GUILayout.BeginHorizontal();
+
+        GUILayout.Label("File: ");
+        loadFileTxt = GUILayout.TextField(loadFileTxt);
+        if (GUILayout.Button("Load"))
+        {
+            meshRender.Loadfile(loadFileTxt);
+
+        }
+
+        GUILayout.EndHorizontal();
+
+        GUILayout.EndVertical();
+    }
+
+    private void drawChangeWindowSize()
+    {
+
+        GUILayout.BeginHorizontal(GUILayout.Width(controlWinRect.width / 2 + 50));
+        GUILayout.Label("Width");        
+        textWidth = GUILayout.TextField(textWidth, GUILayout.Width(60));
+        GUILayout.Label("Height");        
+        textHeight = GUILayout.TextField(textHeight, GUILayout.Width(60));        
+        if (GUILayout.Button("Resize"))
+        {
+            meshRender.DestroyAwesomium();
+            try
+            {
+                int aweWidth = int.Parse(textWidth);
+                int aweHeight = int.Parse(textHeight);
+                meshRender.InitAwesomium(aweWidth, aweHeight);
+                meshRender.getEventHandler().setDimensions(aweWidth, aweHeight);
+            }
+            catch (System.Exception)
+            {
+                Debug.Log("Error parsing width and height");
+            }  
+
+        }
+        GUILayout.EndHorizontal();
+
+    }
+
+    
 
     private void fadeUpButton()
     {
