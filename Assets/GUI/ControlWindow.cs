@@ -162,13 +162,16 @@ public class ControlWindow : MonoBehaviour
 
         if (GUILayout.Button("Show Browser"))
         {
-            showBrowser = true;
+            
             //iTween.Stop(gui);
-            iTween.MoveTo(gui, iTween.Hash("position", startPosition, "time", 2f));
+            iTween.MoveTo(gui, iTween.Hash("position", startPosition, "time", 2f, "oncomplete", "ShowBrowserComplete", "oncompletetarget",gameObject));
             iTween.FadeTo(gui.gameObject, 1, 1);
         }
+    }
 
-
+    void ShowBrowserComplete()
+    {
+        showBrowser = true;        
     }
 
     private void HideBrowserButton()
