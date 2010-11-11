@@ -74,6 +74,7 @@ public class AwesomiumMeshRender : MonoBehaviour
         AwesomiumWrapper.CreateAwesomiumWebView(m_TextureID, m_pixelsHandler.AddrOfPinnedObject(), width, height, this.SetPixels, this.ApplyTexture);        
 
         isAwesomiumInit = true;
+        GetComponent<BrowserGUIEvents>().interactive = true;
         Debug.Log("done init awsommium");
     }
 
@@ -144,6 +145,7 @@ public class AwesomiumMeshRender : MonoBehaviour
             isAwesomiumInit = false;
             AwesomiumWrapper.DestroyAwesomiumWebView(m_TextureID);
             m_pixelsHandler.Free();
+            GetComponent<BrowserGUIEvents>().interactive = false;
         }
         catch (System.Exception e)
         {

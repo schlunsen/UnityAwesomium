@@ -191,10 +191,7 @@ extern "C" __declspec(dllexport) bool isDirtyBuffer(int uniqueId){
 
 extern "C" __declspec(dllexport) void Init(){
 
-    /*m_buffer = buffer;	
-	texWidth = width;
-	texHeight = height;*/
-	webCore = new Awesomium::WebCore(
+    webCore = new Awesomium::WebCore(
                                  L"",
                                  L"",
                                  L"",
@@ -202,28 +199,19 @@ extern "C" __declspec(dllexport) void Init(){
                                  Awesomium::LOG_VERBOSE,
                                  true,
 								 Awesomium::PF_RGBA,
-                                 "");	
+                                 "");		
 	
-	
-	//webView = webCore->createWebView(texWidth, texHeight);
-	////MyWebViewListener *myListener = new MyWebViewListener();	
-	//webView->setListener(m_aweWindow);		
-	//webView->loadURL(URL);	
 }
 
 PLUGIN_API bool CreateAwesomiumWebView(int uniqueID, float *buffer, int width, int height, AwesomiumWindow::SetPixelsFunc setPixelsFunc, AwesomiumWindow::ApplyTextureFunc applyTextureFunc, bool transparent = false, bool enableAsyncRendering = false, int maxAsyncRenderPerSec = 70, const std::string &url = "http://google.dk"){
 	
 	if(awesomiumWindows.find(uniqueID) != awesomiumWindows.end())
-	{
-		//myfile << "Error: a berkelium window with ID " << uniqueID << " already exists!";
+	{		
 		return false;
 	}	
 
 	AwesomiumWindow *pWindow = new AwesomiumWindow(uniqueID, buffer, width, height, setPixelsFunc, applyTextureFunc, transparent, enableAsyncRendering,maxAsyncRenderPerSec,url);
-	
-	//myfile << "Awesomium window created: "  << " (size=" << width << ", " << height << "; url=" << url << ")";
 	awesomiumWindows[uniqueID] = pWindow;		
-
 	return true;
 }
 
@@ -234,7 +222,6 @@ PLUGIN_API void DestroyAwesomiumWebView(int uniqueID){
 }
 
 PLUGIN_API bool isDirty(int uniqueID){
-//return true;
 	AwesomiumWindow* pWindow = getWindow(uniqueID);
 	if(pWindow)
 		return pWindow->isDirty();

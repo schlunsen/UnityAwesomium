@@ -9,10 +9,10 @@ Direct3D:
 <I> Initializing (RawInput).
 <RI> Input initialized.
 desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
-Non platform assembly: data-02F4F350 (this message is harmless)
-Non platform assembly: data-02FB1BC0 (this message is harmless)
-Non platform assembly: data-02FB4430 (this message is harmless)
-Non platform assembly: data-02FC90A0 (this message is harmless)
+Non platform assembly: data-0301F370 (this message is harmless)
+Non platform assembly: data-03081BE0 (this message is harmless)
+Non platform assembly: data-03084450 (this message is harmless)
+Non platform assembly: data-030990C0 (this message is harmless)
 The referenced script on this Behaviour is missing!
  
 (Filename: ..\..\Runtime\Mono\MonoBehaviour.cpp Line: 1695)
@@ -45,6 +45,78 @@ UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
 AwesomiumMeshRender:InitAwesomium(Int32, Int32)
 AwesomiumMeshRender:Start()
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+init awsommium
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+AwesomiumMeshRender:InitAwesomium(Int32, Int32)
+ControlWindow:drawChangeWindowSize()
+ControlWindow:DrawTopLeft()
+ControlWindow:ControlWindowFunc(Int32)
+UnityEngine._Window:Do()
+UnityEngine.GUI:BeginWindows(Event, Int32, IDList, Int32)
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+textID : -10068
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+AwesomiumMeshRender:InitAwesomium(Int32, Int32)
+ControlWindow:drawChangeWindowSize()
+ControlWindow:DrawTopLeft()
+ControlWindow:ControlWindowFunc(Int32)
+UnityEngine._Window:Do()
+UnityEngine.GUI:BeginWindows(Event, Int32, IDList, Int32)
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+done init awsommium
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+AwesomiumMeshRender:InitAwesomium(Int32, Int32)
+ControlWindow:drawChangeWindowSize()
+ControlWindow:DrawTopLeft()
+ControlWindow:ControlWindowFunc(Int32)
+UnityEngine._Window:Do()
+UnityEngine.GUI:BeginWindows(Event, Int32, IDList, Int32)
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+init awsommium
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+AwesomiumMeshRender:InitAwesomium(Int32, Int32)
+ControlWindow:drawDestroyInitComponents()
+ControlWindow:DrawTopLeft()
+ControlWindow:ControlWindowFunc(Int32)
+UnityEngine._Window:Do()
+UnityEngine.GUI:BeginWindows(Event, Int32, IDList, Int32)
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+textID : -10084
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+AwesomiumMeshRender:InitAwesomium(Int32, Int32)
+ControlWindow:drawDestroyInitComponents()
+ControlWindow:DrawTopLeft()
+ControlWindow:ControlWindowFunc(Int32)
+UnityEngine._Window:Do()
+UnityEngine.GUI:BeginWindows(Event, Int32, IDList, Int32)
+ 
+(Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
+
+done init awsommium
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+AwesomiumMeshRender:InitAwesomium(Int32, Int32)
+ControlWindow:drawDestroyInitComponents()
+ControlWindow:DrawTopLeft()
+ControlWindow:ControlWindowFunc(Int32)
+UnityEngine._Window:Do()
+UnityEngine.GUI:BeginWindows(Event, Int32, IDList, Int32)
  
 (Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
 

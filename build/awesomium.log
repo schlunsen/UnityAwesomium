@@ -1,12 +1,11 @@
-[1111/154651:INFO:WebCore.cpp(74)] Creating the core thread.
-[1111/154651:INFO:WebCore.cpp(84)] Creating the WebCore.
-[1111/154651:INFO:WebCoreProxy.cpp(45)] ICU successfully initialized.
-[1111/154651:INFO:RequestContext.cpp(68)] An invalid or empty cookie path was specified, cookies will be lost on program exit.
-[1111/154651:INFO:RequestContext.cpp(111)] An invalid or empty cache path was specified, cache will be lost on program exit.
-[1111/154651:INFO:WebCoreProxy.cpp(202)] The WebCore is now online.
-[1111/154651:INFO:WebView.cpp(68)] A new WebView has been created.
-[1111/154651:INFO:WebViewProxy.cpp(150)] WebViewProxy[0] has been created.
-[1111/154653:INFO:proxy_service.cc(619)] New proxy configuration was loaded:
+[1111/161944:INFO:WebCore.cpp(74)] Creating the core thread.
+[1111/161944:INFO:WebCore.cpp(84)] Creating the WebCore.
+[1111/161944:INFO:RequestContext.cpp(68)] An invalid or empty cookie path was specified, cookies will be lost on program exit.
+[1111/161944:INFO:RequestContext.cpp(111)] An invalid or empty cache path was specified, cache will be lost on program exit.
+[1111/161944:INFO:WebView.cpp(68)] A new WebView has been created.
+[1111/161944:INFO:WebCoreProxy.cpp(202)] The WebCore is now online.
+[1111/161944:INFO:WebViewProxy.cpp(150)] WebViewProxy[2] has been created.
+[1111/161945:INFO:proxy_service.cc(619)] New proxy configuration was loaded:
 {
   auto_detect: 0
   pac_url: 
@@ -22,30 +21,3 @@
   proxy_bypass_list:
   id: 1
 }
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=0
-[1111/154654:INFO:plugin_lib.cc(115)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): result=0
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/154654:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/154654:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/160233:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/160233:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
