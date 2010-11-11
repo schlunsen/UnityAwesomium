@@ -6,13 +6,13 @@ Direct3D:
     Vendor:   ATI
     VRAM:     624 MB
     Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 DF24=1 INTZ=0 RAWZ=0 NULL=0 RESZ=1 SlowINTZ=1
+desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
 <I> Initializing (RawInput).
 <RI> Input initialized.
-desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
-Non platform assembly: data-0301F370 (this message is harmless)
-Non platform assembly: data-03081BE0 (this message is harmless)
-Non platform assembly: data-03084450 (this message is harmless)
-Non platform assembly: data-030990C0 (this message is harmless)
+Non platform assembly: data-02F7F370 (this message is harmless)
+Non platform assembly: data-02FE1BE0 (this message is harmless)
+Non platform assembly: data-02FE4450 (this message is harmless)
+Non platform assembly: data-02FF90C0 (this message is harmless)
 The referenced script on this Behaviour is missing!
  
 (Filename: ..\..\Runtime\Mono\MonoBehaviour.cpp Line: 1695)
@@ -52,7 +52,7 @@ init awsommium
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
 AwesomiumMeshRender:InitAwesomium(Int32, Int32)
-ControlWindow:drawChangeWindowSize()
+ControlWindow:drawDestroyInitComponents()
 ControlWindow:DrawTopLeft()
 ControlWindow:ControlWindowFunc(Int32)
 UnityEngine._Window:Do()
@@ -60,11 +60,11 @@ UnityEngine.GUI:BeginWindows(Event, Int32, IDList, Int32)
  
 (Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
 
-textID : -10068
+textID : -10070
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
 AwesomiumMeshRender:InitAwesomium(Int32, Int32)
-ControlWindow:drawChangeWindowSize()
+ControlWindow:drawDestroyInitComponents()
 ControlWindow:DrawTopLeft()
 ControlWindow:ControlWindowFunc(Int32)
 UnityEngine._Window:Do()
@@ -76,7 +76,7 @@ done init awsommium
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
 AwesomiumMeshRender:InitAwesomium(Int32, Int32)
-ControlWindow:drawChangeWindowSize()
+ControlWindow:drawDestroyInitComponents()
 ControlWindow:DrawTopLeft()
 ControlWindow:ControlWindowFunc(Int32)
 UnityEngine._Window:Do()
@@ -88,7 +88,7 @@ init awsommium
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
 AwesomiumMeshRender:InitAwesomium(Int32, Int32)
-ControlWindow:drawDestroyInitComponents()
+ControlWindow:drawChangeWindowSize()
 ControlWindow:DrawTopLeft()
 ControlWindow:ControlWindowFunc(Int32)
 UnityEngine._Window:Do()
@@ -96,11 +96,11 @@ UnityEngine.GUI:BeginWindows(Event, Int32, IDList, Int32)
  
 (Filename: ..\..\Runtime\Export\Generated\BaseClass.cpp Line: 2528)
 
-textID : -10084
+textID : -10074
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
 AwesomiumMeshRender:InitAwesomium(Int32, Int32)
-ControlWindow:drawDestroyInitComponents()
+ControlWindow:drawChangeWindowSize()
 ControlWindow:DrawTopLeft()
 ControlWindow:ControlWindowFunc(Int32)
 UnityEngine._Window:Do()
@@ -112,7 +112,7 @@ done init awsommium
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
 AwesomiumMeshRender:InitAwesomium(Int32, Int32)
-ControlWindow:drawDestroyInitComponents()
+ControlWindow:drawChangeWindowSize()
 ControlWindow:DrawTopLeft()
 ControlWindow:ControlWindowFunc(Int32)
 UnityEngine._Window:Do()

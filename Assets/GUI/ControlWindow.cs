@@ -81,7 +81,7 @@ public class ControlWindow : MonoBehaviour
         drawDestroyInitComponents();
 
     }
-
+    
     private void drawDestroyInitComponents()
     {
         if (meshRender.isAwesomiumInit)

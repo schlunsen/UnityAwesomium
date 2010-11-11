@@ -19,9 +19,10 @@ public:
 	typedef void (*SetPixelsFunc)(/*int left, int top, int width, int height*/);
 	typedef void (*ApplyTextureFunc)();
 	
-	//Delegates / callback functions
+	//Delegates - callback functions
 	SetPixelsFunc m_setPixelsFunc;
 	ApplyTextureFunc m_applyTextureFunc;
+	
 	bool isEnabled;
 	float* pixelBuffer;	
 	int m_width;
@@ -36,10 +37,8 @@ public:
 		pixelBuffer = buffer;
 		isEnabled = true;
 		// hookup callbacks 
-		setPaintFunctions(setPixelFunc,applyTextureFunc);			
-		
-		m_webView = webCore->createWebView(m_width,m_height);		
-		
+		setPaintFunctions(setPixelFunc,applyTextureFunc);		
+		m_webView = webCore->createWebView(m_width,m_height);				
 		m_webView->setListener(this);
 		//m_webView->loadURL("http:://google.dk");//url);
 

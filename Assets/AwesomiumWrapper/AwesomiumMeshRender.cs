@@ -131,10 +131,12 @@ public class AwesomiumMeshRender : MonoBehaviour
 
     public void Loadfile(string filePath)
     {
+        if (isAwesomiumInit)
         AwesomiumWrapper.LoadFile(m_TextureID,filePath);
     }
 
     public void LoadURL(string url){
+        if (isAwesomiumInit)
         AwesomiumWrapper.LoadURL(m_TextureID, url);
     }
 
@@ -142,10 +144,11 @@ public class AwesomiumMeshRender : MonoBehaviour
     {
         try
         {            
-            isAwesomiumInit = false;
+            
             AwesomiumWrapper.DestroyAwesomiumWebView(m_TextureID);
             m_pixelsHandler.Free();
             GetComponent<BrowserGUIEvents>().interactive = false;
+            isAwesomiumInit = false;
         }
         catch (System.Exception e)
         {
