@@ -11,11 +11,13 @@ public class BrowserGUIEvents : MonoBehaviour
 
     private bool mouseOver = false;
     public AwesomiumMeshRender mesh;
+    
 
     void Start()
     {
         width = mesh.width;
         height = mesh.height;
+        
         
     }
 
@@ -30,8 +32,8 @@ public class BrowserGUIEvents : MonoBehaviour
         if (Event.current.isKey && GUIUtility.keyboardControl == 0)
         {
             // Insert character
-            Debug.Log(Event.current.keyCode);
-            AwesomiumWrapper.injectKeyboard((int)Event.current.keyCode, 2, 0);
+            //Debug.Log(Event.current.keyCode);
+            //AwesomiumWrapper.InjectKeyboard(mesh.m_TextureID, (int)Event.current.keyCode, 2, 0);
         
             
             
@@ -62,7 +64,7 @@ public class BrowserGUIEvents : MonoBehaviour
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0)
-            AwesomiumWrapper.scrollWheel((int)scroll);
+            AwesomiumWrapper.ScrollWheel(mesh.m_TextureID, (int)scroll);
 
         handleKeys();
     }
@@ -73,7 +75,7 @@ public class BrowserGUIEvents : MonoBehaviour
         int dyScroll = (int)Input.GetAxis("Vertical") * 100;
         if (dyScroll != 0)
         {
-            AwesomiumWrapper.scrollWheel(dyScroll);
+            AwesomiumWrapper.ScrollWheel(mesh.m_TextureID, dyScroll);
         }
         
     }
@@ -82,17 +84,16 @@ public class BrowserGUIEvents : MonoBehaviour
        
         // Only when interactive is enabled
         if (!interactive)
-            return;
-        Debug.Log("Mousedown");
+            return;        
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {           
 
             int x = /*width -*/ (int)(hit.textureCoord.x * width);
-            int y = height - (int)(hit.textureCoord.y * height);            
+            int y = height - (int)(hit.textureCoord.y * height);
 
-            AwesomiumWrapper.mouseMove(x, y);
-            AwesomiumWrapper.mouseDown(0);                   
+            AwesomiumWrapper.MouseMove(mesh.m_TextureID, x, y);
+            AwesomiumWrapper.MouseDown(mesh.m_TextureID, 0);                   
         }
     }
 
@@ -101,15 +102,14 @@ public class BrowserGUIEvents : MonoBehaviour
         // Only when interactive is enabled
         if (!interactive)
             return;
-        Debug.Log("Mouse up 1");
+        
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-        {
-            Debug.Log("Mouse up");
+        {            
             int x = /*width -*/ (int)(hit.textureCoord.x * width);
             int y = height - (int)(hit.textureCoord.y * height);
-            AwesomiumWrapper.mouseMove(x, y);
-            AwesomiumWrapper.mouseUp(0);
+            AwesomiumWrapper.MouseMove(mesh.m_TextureID, x, y);
+            AwesomiumWrapper.MouseUp(mesh.m_TextureID, 0);
         }
     }
     
@@ -124,10 +124,10 @@ public class BrowserGUIEvents : MonoBehaviour
       
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-        {            
+        {         
             int x = /*width -*/ (int)(hit.textureCoord.x * width);
             int y = height - (int)(hit.textureCoord.y * height);
-            AwesomiumWrapper.mouseMove(x, y);           
+            AwesomiumWrapper.MouseMove(mesh.m_TextureID, x, y);           
         }
     }
 

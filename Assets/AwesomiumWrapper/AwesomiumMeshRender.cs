@@ -14,7 +14,7 @@ public class AwesomiumMeshRender : MonoBehaviour
     private Color[] m_pixels;
     private GCHandle m_pixelsHandler;
     private Texture2D m_texture;
-    private int m_TextureID;
+    public int m_TextureID;
 
     private bool showBrowser = true;
 
@@ -24,7 +24,7 @@ public class AwesomiumMeshRender : MonoBehaviour
     private BrowserGUIEvents browserEventHandler;
 
     private AwesomiumWrapper.SetPixelsFunc m_setPixelsFunction;
-    private AwesomiumWrapper.ApplyPixelsFunc m_applyPixelsFunction;
+    private AwesomiumWrapper.ApplyTextureFunc m_applyPixelsFunction;
 
 
     // Use this for initialization
@@ -32,7 +32,8 @@ public class AwesomiumMeshRender : MonoBehaviour
     {
         browserEventHandler = GetComponent<BrowserGUIEvents>();
         controlWindow = GameObject.Find("ControlWindow").GetComponent<ControlWindow>();
-        InitAwesomium(width, height);        
+        Debug.Log(width);
+        InitAwesomium(width,height);        
         
         //// Create texture in ARGB32 format
         //m_texture = new Texture2D(width, height, TextureFormat.ARGB32, true);
@@ -56,7 +57,7 @@ public class AwesomiumMeshRender : MonoBehaviour
 
     public void InitAwesomium(int width, int height)
     {
-        Debug.Log("init awseomium");
+        Debug.Log("init awsommium");
         this.width = width;
         this.height = height;
         m_texture = new Texture2D(width, height, TextureFormat.ARGB32, true);
@@ -64,12 +65,16 @@ public class AwesomiumMeshRender : MonoBehaviour
         m_pixels = m_texture.GetPixels(0);
         // Create window handle id - future usage
         m_TextureID = m_texture.GetInstanceID();
+        Debug.Log("textID : " + m_TextureID);
         // assign m_texture to this GUITexture texture
         gameObject.renderer.material.mainTexture = m_texture;
         // Create GCHandle - Allocation of m_pixels in memory. 
         m_pixelsHandler = GCHandle.Alloc(m_pixels, GCHandleType.Pinned);
-        AwesomiumWrapper.init(m_pixelsHandler.AddrOfPinnedObject(), width, height);
+        AwesomiumWrapper.Init();
+        AwesomiumWrapper.CreateAwesomiumWebView(m_TextureID, m_pixelsHandler.AddrOfPinnedObject(), width, height, this.SetPixels, this.ApplyTexture);        
+
         isAwesomiumInit = true;
+        Debug.Log("done init awsommium");
     }
 
 
@@ -78,10 +83,11 @@ public class AwesomiumMeshRender : MonoBehaviour
     {
         if (isAwesomiumInit == true && controlWindow.showBrowser)
         {
-            AwesomiumWrapper.update();
-            // Check to see if render flag is set in unmanaged code. Need changing to delegates instead
-            if (AwesomiumWrapper.isDirtyBuffer())
-            {
+            
+            AwesomiumWrapper.Update();            
+            //// Check to see if render flag is set in unmanaged code. Need changing to delegates instead
+            if (AwesomiumWrapper.isDirty(m_TextureID))
+            {                
                 m_texture.SetPixels(m_pixels, 0);
                 m_texture.Apply();
             }
@@ -99,34 +105,44 @@ public class AwesomiumMeshRender : MonoBehaviour
     void OnApplicationQuit()
     {
         Debug.Log("quit");
-        AwesomiumWrapper.closeFileStream();
+        AwesomiumWrapper.CloseFileStream();
+        //AwesomiumWrapper.DestroyAwesomiumWebView(m_TextureID);
+        //DestroyAwesomium();
+        //AwesomiumWrapper.Destroy();
 
     }
 
 
     public void SetPixels()
     {
+        Debug.Log(Time.frameCount + "SetPixels");
+        m_texture.SetPixels(m_pixels, 0);
 
     }
 
-    public void ApplyPixels()
+    public void ApplyTexture()
     {
-
+        Debug.Log("ApplyTexture");
+        m_texture.Apply();
     }
 
     // Methods should be moved to new class
 
     public void Loadfile(string filePath)
     {
-        AwesomiumWrapper.loadFile(filePath);
+        AwesomiumWrapper.LoadFile(m_TextureID,filePath);
     }
 
-    public void DestroyAwesomium()
+    public void LoadURL(string url){
+        AwesomiumWrapper.LoadURL(m_TextureID, url);
+    }
+
+    public void DestroyAwesomiumWindow()
     {
         try
         {            
             isAwesomiumInit = false;
-            AwesomiumWrapper.Destroy();
+            AwesomiumWrapper.DestroyAwesomiumWebView(m_TextureID);
             m_pixelsHandler.Free();
         }
         catch (System.Exception e)

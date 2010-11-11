@@ -8,14 +8,13 @@
 #define URL	"http://google.dk/"
 
 // unity float buffer ~ m_pixels in unity (Pointer to Color[] ??)
-float* m_buffer;
+//float* m_buffer;
 
-static Awesomium::WebView* webView = 0;
 
 //Unity prop
-int texWidth;
-int texHeight;
-std::ofstream myfile(".\\output\\debugger.log");
+//int texWidth;
+//int texHeight;
+//std::ofstream myfile(".\\output\\debugger.log");
 
 
 

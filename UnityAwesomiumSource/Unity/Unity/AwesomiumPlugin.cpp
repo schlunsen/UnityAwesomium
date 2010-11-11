@@ -9,23 +9,103 @@
 
 #define SLEEP_MS	250
 
+static Awesomium::WebCore* webCore;
 
 
-//Delegates
-//type_def void (*SetPixelsFunc);
-//
-//SetPixelsFunc m_setPixelsFunc;
 
-Awesomium::WebCore* webCore;
-
-
-class MyWebViewListener : public Awesomium::WebViewListener
+class AwesomiumWindow : public Awesomium::WebViewListener
 {
 public:
+	typedef void (*SetPixelsFunc)(/*int left, int top, int width, int height*/);
+	typedef void (*ApplyTextureFunc)();
 	
-	MyWebViewListener(float* buf)
+	//Delegates / callback functions
+	SetPixelsFunc m_setPixelsFunc;
+	ApplyTextureFunc m_applyTextureFunc;
+	bool isEnabled;
+	float* pixelBuffer;	
+	int m_width;
+	int m_height;	
+	Awesomium::WebView* m_webView;
+	bool m_isDirty;
+
+	
+	AwesomiumWindow(int uniqueID, float *buffer, int width, int height, SetPixelsFunc setPixelFunc, ApplyTextureFunc applyTextureFunc, bool transparent = false, bool enableAsyncRendering = false, int maxAsyncRenderPerSec = 70, const std::string &url = "http://google.dk") : m_width(width), m_height(height)
 	{
+		m_isDirty = true;
+		pixelBuffer = buffer;
+		isEnabled = true;
+		// hookup callbacks 
+		setPaintFunctions(setPixelFunc,applyTextureFunc);			
+		
+		m_webView = webCore->createWebView(m_width,m_height);		
+		
+		m_webView->setListener(this);
+		//m_webView->loadURL("http:://google.dk");//url);
+
 	}
+
+	AwesomiumWindow::~AwesomiumWindow(){
+		//free(pixelBuffer);
+		m_webView->destroy();
+	}
+
+	void update(){
+
+		if (isEnabled && m_webView->isDirty()){		
+			// Create char pixel buffer 
+			unsigned char* buffer = new unsigned char[m_width * m_height * 4];		
+			// render to pixel buffer				
+			m_webView->render(buffer, m_width * 4, 4);				
+
+			// Convert and copy rendered Awesomium pixel buffer to our float buffer
+			this->convertBuffer(buffer);
+			m_isDirty = true;		
+
+		//	 Do repaint in unity
+		/*	if (m_setPixelsFunc)
+				m_setPixelsFunc();
+
+			if (m_applyTextureFunc)
+				m_applyTextureFunc();	*/	
+
+			delete buffer;		
+		}
+
+	}
+
+	// Callbacks
+	void setPaintFunctions(SetPixelsFunc setPixelsFunc, ApplyTextureFunc applyTextureFunc){
+		m_setPixelsFunc = setPixelsFunc;
+		m_applyTextureFunc = applyTextureFunc;
+	}
+
+	// Hack instead of callbacks. If dirty then unity should render
+	bool isDirty(){
+		if (m_isDirty == true)
+		{			
+			m_isDirty = false;
+			return true;
+		}
+		return false;			
+	}
+
+	/**
+* Convert unsigned char buffer to float buffer
+**/
+void convertBuffer(unsigned char* charBuf){	
+
+for(int y = 0; y < m_height; ++y)
+{
+	for(int x = 0; x < m_width * 4; ++x)
+    {	
+        //copy a pixel from a row y from the top of inData to a row y from the bottom of outData
+        //x is the xth byte of the row, not the xth pixel.
+		pixelBuffer[y * m_width * 4 + x] = charBuf[(m_height - 1 - y) * m_width * 4 + x] / 255.0f;
+	
+    }
+}
+}
 	
 	void onBeginNavigation(Awesomium::WebView* caller, const std::string& url, const std::wstring& frameName)
 	{		
@@ -72,19 +152,21 @@ public:
 
 
 
-/**
-* Convert unsigned char buffer to float buffer
-**/
-void convertBuffer(unsigned char* charBuf,float* floatBuf){
-for(int y = 0; y < texHeight; ++y)
-{
-	for(int x = 0; x < texWidth * 4; ++x)
-    {
-        //copy a pixel from a row y from the top of inData to a row y from the bottom of outData
-        //x is the xth byte of the row, not the xth pixel.
-		m_buffer[y * texWidth * 4 + x] = charBuf[(texHeight - 1 - y) * texWidth * 4 + x] / 255.0f;
-    }
-}
+#include <map>
+// A map that holds the created windows
+typedef std::map<int, AwesomiumWindow *> WindowMap;
+WindowMap awesomiumWindows;
+
+AwesomiumWindow *getWindow(int id)
+{		
+	WindowMap::const_iterator it = awesomiumWindows.find(id);
+	if(it == awesomiumWindows.end())
+	{
+		//myfile << "Warning: no awesomium window found with ID " << id << "!";
+		return 0;
+	}	
+
+	return it->second;
 }
 
 
@@ -93,71 +175,108 @@ for(int y = 0; y < texHeight; ++y)
 * Flag for wheater or not rendering should be processed in unity.
 * Needs to be replaced with delegates functioning as callbacks to the C# unity code
 **/
-bool dirtyBuffer = false;
-extern "C" __declspec(dllexport) bool isDirtyBuffer(){
 
-	if (dirtyBuffer == true){
-		dirtyBuffer = false;
-		return true;
-	}
-	return dirtyBuffer;
+extern "C" __declspec(dllexport) bool isDirtyBuffer(int uniqueId){
+	AwesomiumWindow* pWindow = getWindow(uniqueId);
+	if (pWindow)
+		return pWindow->isDirty();
+
+	return false;
 }
 
 
-extern "C" __declspec(dllexport) void init(float* buffer, int width, int height){
+/**
+*
+**/
 
-    m_buffer = buffer;	
+extern "C" __declspec(dllexport) void Init(){
+
+    /*m_buffer = buffer;	
 	texWidth = width;
-	texHeight = height;
-	
-	myfile << "Unity texture width: " << texWidth << "\n";
-	myfile << "Unity texture height: " << texHeight << "\n";
-	myfile << "m_buffer size (sizeof): " << sizeof(m_buffer);
-
+	texHeight = height;*/
 	webCore = new Awesomium::WebCore(
                                  L"",
                                  L"",
                                  L"",
                                  L"",
                                  Awesomium::LOG_VERBOSE,
-                                 false,
+                                 true,
 								 Awesomium::PF_RGBA,
                                  "");	
-	webView = webCore->createWebView(texWidth, texHeight);
-	MyWebViewListener *myListener = new MyWebViewListener(m_buffer);	
-	webView->setListener(myListener);		
-	webView->loadURL(URL);	
+	
+	
+	//webView = webCore->createWebView(texWidth, texHeight);
+	////MyWebViewListener *myListener = new MyWebViewListener();	
+	//webView->setListener(m_aweWindow);		
+	//webView->loadURL(URL);	
 }
-bool isDestroying = false;
+
+PLUGIN_API bool CreateAwesomiumWebView(int uniqueID, float *buffer, int width, int height, AwesomiumWindow::SetPixelsFunc setPixelsFunc, AwesomiumWindow::ApplyTextureFunc applyTextureFunc, bool transparent = false, bool enableAsyncRendering = false, int maxAsyncRenderPerSec = 70, const std::string &url = "http://google.dk"){
+	
+	if(awesomiumWindows.find(uniqueID) != awesomiumWindows.end())
+	{
+		//myfile << "Error: a berkelium window with ID " << uniqueID << " already exists!";
+		return false;
+	}	
+
+	AwesomiumWindow *pWindow = new AwesomiumWindow(uniqueID, buffer, width, height, setPixelsFunc, applyTextureFunc, transparent, enableAsyncRendering,maxAsyncRenderPerSec,url);
+	
+	//myfile << "Awesomium window created: "  << " (size=" << width << ", " << height << "; url=" << url << ")";
+	awesomiumWindows[uniqueID] = pWindow;		
+
+	return true;
+}
+
+PLUGIN_API void DestroyAwesomiumWebView(int uniqueID){
+	AwesomiumWindow* pWindow = getWindow(uniqueID);
+	if(pWindow)
+		delete pWindow;
+}
+
+PLUGIN_API bool isDirty(int uniqueID){
+//return true;
+	AwesomiumWindow* pWindow = getWindow(uniqueID);
+	if(pWindow)
+		return pWindow->isDirty();
+
+	return false;
+}
+
 PLUGIN_API void Destroy(){	
-	webCore->pause();
-	delete m_buffer;
-	webView->destroy();
+	for (std::map<int, AwesomiumWindow *>::iterator it = awesomiumWindows.begin(); it != awesomiumWindows.end(); it++) {
+		it->second->~AwesomiumWindow();		
+	}			
+	
 	delete webCore;
 }
 
 
-PLUGIN_API void update(){	
-	webCore->update();	
-	if (webView->isDirty()){				
-		// Create pixel buffer 
-		unsigned char* buffer = new unsigned char[texWidth * texHeight* 4];		
-		// render to pixel buffer				
-		webView->render(buffer, texWidth * 4, 4);
-		// Convert and copy rendered Awesomium pixel buffer to our float buffer
-		convertBuffer(buffer,m_buffer);
-		// Set flag for rerendering 
-		dirtyBuffer  = true;
-		delete buffer;		
+PLUGIN_API void Update(){	
+	
+	webCore->update();		
+	
+	//traverse windows
+	// update webviews
+	for (std::map<int, AwesomiumWindow *>::iterator it = awesomiumWindows.begin(); it != awesomiumWindows.end(); it++) {									
+		it->second->update();		
+	}	
+}
+
+PLUGIN_API void LoadURL(int uniqueId, char* url){
+	AwesomiumWindow* pWindow = getWindow(uniqueId);
+	if (pWindow)
+		pWindow->m_webView->loadURL(url);
+	
+}
+
+PLUGIN_API void LoadFile(int uniqueId, char* url){	
+	
+	AwesomiumWindow* pWindow = getWindow(uniqueId);	
+	if (pWindow)
+	{
+			pWindow->m_webView->loadFile(url);
 	}
-}
-
-PLUGIN_API void gotoURL(char* url){	
-	webView->loadURL(url);	
-}
-
-PLUGIN_API void loadFile(char* url){	
-	webView->loadFile(url);		
+	
 }
 
 
@@ -165,58 +284,81 @@ PLUGIN_API void loadFile(char* url){
 /**
 * Keyboard wrapping
 **/
-PLUGIN_API void injectKeyboard(int msg, int wParam, long lParam){
-	webView->injectKeyboardEvent(Awesomium::WebKeyboardEvent(msg,wParam,lParam));
+PLUGIN_API void InjectKeyboard(int uniqueId, int msg, int wParam, long lParam){
+	AwesomiumWindow* pWindow = getWindow(uniqueId);
+	if (pWindow)
+		pWindow->m_webView->injectKeyboardEvent(Awesomium::WebKeyboardEvent(msg,wParam,lParam));
+	
 }
 
 /**
 * wrap mouse functions function
 **/
-PLUGIN_API void mouseDown(int mouseButton){
-	//webView->focus();
-	switch (mouseButton){	
-		case 0:
-		webView->injectMouseDown(Awesomium::LEFT_MOUSE_BTN);
-		break;
-		case 1:
-		webView->injectMouseDown(Awesomium::RIGHT_MOUSE_BTN);
-		break;
+PLUGIN_API void MouseDown(int uniqueId, int mouseButton){
+	AwesomiumWindow* pWindow = getWindow(uniqueId);
+	if (pWindow){		
+		switch (mouseButton){	
+			case 0:
+				pWindow->m_webView->injectMouseDown(Awesomium::LEFT_MOUSE_BTN);
+			break;
+			case 1:
+			pWindow->m_webView->injectMouseDown(Awesomium::RIGHT_MOUSE_BTN);
+			break;
+		}
 	}
 	
 }
 
-PLUGIN_API void mouseUp(int mouseButton){
-	//webView->focus();
-	switch (mouseButton){	
-		case 0:
-		webView->injectMouseUp(Awesomium::LEFT_MOUSE_BTN);		
-		break;
-		case 1:
-		webView->injectMouseUp(Awesomium::RIGHT_MOUSE_BTN);
-		break;
+PLUGIN_API void MouseUp(int uniqueId, int mouseButton){
+	AwesomiumWindow* pWindow = getWindow(uniqueId);
+	if (pWindow){	
+		switch (mouseButton){	
+			case 0:
+				pWindow->m_webView->injectMouseUp(Awesomium::LEFT_MOUSE_BTN);		
+			break;
+			case 1:
+			pWindow->m_webView->injectMouseUp(Awesomium::RIGHT_MOUSE_BTN);
+			break;
+		}
 	}
 	
 }
 
 
-PLUGIN_API void mouseMove(int x,int y){
-	//webView->focus();
-	webView->injectMouseMove(x,y);		
+PLUGIN_API void MouseMove(int uniqueId,int x,int y){	
+	AwesomiumWindow* pWindow = getWindow(uniqueId);
+	if (pWindow){	
+		pWindow->m_webView->injectMouseMove(x,y);		
+	
+	}
 }
 
 /**
 * wrap scrollwheel function
 **/
-PLUGIN_API void scrollWheel(int amount){	
-	webView->injectMouseWheel(amount);	
+PLUGIN_API void ScrollWheel(int uniqueId,int amount){	
+	AwesomiumWindow* pWindow = getWindow(uniqueId);
+	if (pWindow)
+		pWindow->m_webView->injectMouseWheel(amount);	
 }
 
 // End mouse functions
+
+/**
+* Enabled/Disable window
+**/
+PLUGIN_API void EnabledWindow(int uniqueId,bool isEnabled){	
+	AwesomiumWindow* pWindow = getWindow(uniqueId);
+	if (pWindow)
+		pWindow->isEnabled = isEnabled;	
+}
 
 
 /**
 * Closing logfilestream
 **/
-extern "C" __declspec(dllexport) void closeFileStream(){
-	myfile.close();	
+
+PLUGIN_API void CloseFileStream(){
+//	myfile.close();	
+	
 }

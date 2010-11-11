@@ -7,7 +7,7 @@ public class ControlWindow : MonoBehaviour
     public bool showBrowser = true;
     //Window releated;
     private int controlWindowId = 1;
-    private Rect controlWinRect = new Rect(0, 0, 500, 500);
+    private Rect controlWinRect = new Rect(0, 0, 400, 200);
     private string txtString = "http://www.dr.dk";
     private Vector3 startPosition;
     public GameObject gui;
@@ -38,11 +38,11 @@ public class ControlWindow : MonoBehaviour
     {
         GUI.DragWindow(new Rect(0, 0, 500, 25));
 
-        GUILayout.BeginArea(new Rect(0,20,controlWinRect.width ,controlWinRect.height));
+        //GUILayout.BeginArea(new Rect(,20,controlWinRect.width ,controlWinRect.height));
         
         DrawTopLeft();        
         
-        GUILayout.EndArea();
+        //GUILayout.EndArea();
 
     }
 
@@ -54,22 +54,22 @@ public class ControlWindow : MonoBehaviour
         txtString = GUILayout.TextField(txtString);
 
         if (Event.current.isKey && Event.current.keyCode == KeyCode.Return && GUI.GetNameOfFocusedControl() == "urlInputField")
-            AwesomiumWrapper.gotoURL(txtString);
+            meshRender.LoadURL(txtString);
 
         if (GUILayout.Button("Go"))
         {
-            AwesomiumWrapper.gotoURL(txtString);
+            meshRender.LoadURL(txtString);            
         }
         GUILayout.EndHorizontal();
         GUILayout.Space(4);
         GUILayout.BeginVertical();
         if (showBrowser)
         {
-            fadeDownButton();
+            HideBrowserButton();
         }
         else
         {
-            fadeUpButton();
+            ShowBrowserButton();
         }
         
         //GUI.SetNextControlName("textWidth");
@@ -88,7 +88,7 @@ public class ControlWindow : MonoBehaviour
         {
             if (GUILayout.Button("Destroy"))
             {
-                meshRender.DestroyAwesomium();
+                meshRender.DestroyAwesomiumWindow();
             }
         }
         else
@@ -120,7 +120,6 @@ public class ControlWindow : MonoBehaviour
         if (GUILayout.Button("Load"))
         {
             meshRender.Loadfile(loadFileTxt);
-
         }
 
         GUILayout.EndHorizontal();
@@ -131,14 +130,14 @@ public class ControlWindow : MonoBehaviour
     private void drawChangeWindowSize()
     {
 
-        GUILayout.BeginHorizontal(GUILayout.Width(controlWinRect.width / 2 + 50));
+        GUILayout.BeginHorizontal();
         GUILayout.Label("Width");        
-        textWidth = GUILayout.TextField(textWidth, GUILayout.Width(60));
+        textWidth = GUILayout.TextField(textWidth);
         GUILayout.Label("Height");        
-        textHeight = GUILayout.TextField(textHeight, GUILayout.Width(60));        
+        textHeight = GUILayout.TextField(textHeight);        
         if (GUILayout.Button("Resize"))
         {
-            meshRender.DestroyAwesomium();
+            meshRender.DestroyAwesomiumWindow();
             try
             {
                 int aweWidth = int.Parse(textWidth);
@@ -158,7 +157,7 @@ public class ControlWindow : MonoBehaviour
 
     
 
-    private void fadeUpButton()
+    private void ShowBrowserButton()
     {
 
         if (GUILayout.Button("Show Browser"))
@@ -172,7 +171,7 @@ public class ControlWindow : MonoBehaviour
 
     }
 
-    private void fadeDownButton()
+    private void HideBrowserButton()
     {
         if (GUILayout.Button("Hide Browser"))
         {
