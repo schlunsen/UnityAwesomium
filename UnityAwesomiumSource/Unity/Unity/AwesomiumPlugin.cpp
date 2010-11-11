@@ -40,17 +40,18 @@ public:
 		setPaintFunctions(setPixelFunc,applyTextureFunc);		
 		m_webView = webCore->createWebView(m_width,m_height);				
 		m_webView->setListener(this);
-		//m_webView->loadURL("http:://google.dk");//url);
+		m_webView->loadURL("http://google.dk");//url);
 
 	}
 
 	AwesomiumWindow::~AwesomiumWindow(){
 		//free(pixelBuffer);
 		m_webView->destroy();
+		isEnabled = false;
 	}
 
 	void update(){
-
+		
 		if (isEnabled && m_webView->isDirty()){		
 			// Create char pixel buffer 
 			unsigned char* buffer = new unsigned char[m_width * m_height * 4];		
@@ -59,6 +60,8 @@ public:
 
 			// Convert and copy rendered Awesomium pixel buffer to our float buffer
 			this->convertBuffer(buffer);
+			
+			// set Unity render flag. Temporarely fix
 			m_isDirty = true;		
 
 		//	 Do repaint in unity
@@ -100,8 +103,7 @@ for(int y = 0; y < m_height; ++y)
     {	
         //copy a pixel from a row y from the top of inData to a row y from the bottom of outData
         //x is the xth byte of the row, not the xth pixel.
-		pixelBuffer[y * m_width * 4 + x] = charBuf[(m_height - 1 - y) * m_width * 4 + x] / 255.0f;
-	
+		pixelBuffer[y * m_width * 4 + x] = charBuf[(m_height - 1 - y) * m_width * 4 + x] / 255.0f;	
     }
 }
 }
@@ -160,8 +162,7 @@ AwesomiumWindow *getWindow(int id)
 {		
 	WindowMap::const_iterator it = awesomiumWindows.find(id);
 	if(it == awesomiumWindows.end())
-	{
-		//myfile << "Warning: no awesomium window found with ID " << id << "!";
+	{		
 		return 0;
 	}	
 

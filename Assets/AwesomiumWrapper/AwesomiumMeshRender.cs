@@ -143,12 +143,15 @@ public class AwesomiumMeshRender : MonoBehaviour
     public void DestroyAwesomiumWindow()
     {
         try
-        {            
-            
-            AwesomiumWrapper.DestroyAwesomiumWebView(m_TextureID);
-            m_pixelsHandler.Free();
-            GetComponent<BrowserGUIEvents>().interactive = false;
-            isAwesomiumInit = false;
+        {
+            if (m_TextureID != 0)
+            {
+                AwesomiumWrapper.DestroyAwesomiumWebView(m_TextureID);
+                m_pixelsHandler.Free();
+                GetComponent<BrowserGUIEvents>().interactive = false;
+                isAwesomiumInit = false;
+                m_TextureID = 0;
+            }
         }
         catch (System.Exception e)
         {
