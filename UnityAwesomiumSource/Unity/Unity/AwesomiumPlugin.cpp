@@ -11,8 +11,6 @@
 
 static Awesomium::WebCore* webCore;
 
-
-
 class AwesomiumWindow : public Awesomium::WebViewListener
 {
 public:
