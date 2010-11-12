@@ -11,7 +11,7 @@
 
 static Awesomium::WebCore* webCore;
 
-class AwesomiumWindow : public Awesomium::WebViewListener
+class AwesomiumWindow //: public Awesomium::WebViewListener
 {
 public:
 	typedef void (*SetPixelsFunc)(/*int left, int top, int width, int height*/);
@@ -37,14 +37,14 @@ public:
 		// hookup callbacks 
 		setPaintFunctions(setPixelFunc,applyTextureFunc);		
 		m_webView = webCore->createWebView(m_width,m_height);				
-		m_webView->setListener(this);
+		//m_webView->setListener(this);
 		m_webView->loadURL("http://google.dk");//url);
 
 	}
 
 	AwesomiumWindow::~AwesomiumWindow(){
 		//free(pixelBuffer);
-		m_webView->destroy();
+		m_webView->destroy();		
 		isEnabled = false;
 	}
 
@@ -188,16 +188,16 @@ extern "C" __declspec(dllexport) bool isDirtyBuffer(int uniqueId){
 **/
 
 extern "C" __declspec(dllexport) void Init(){
-
-    webCore = new Awesomium::WebCore(
+	webCore = new Awesomium::WebCore(Awesomium::LOG_VERBOSE,true, Awesomium::PF_RGBA);
+    /*webCore = new Awesomium::WebCore(
                                  L"",
                                  L"",
                                  L"",
                                  L"",
-                                 Awesomium::LOG_VERBOSE,
+								 Awesomium::LOG_VERBOSE,
                                  true,
 								 Awesomium::PF_RGBA,
-                                 "");		
+                                 "");		*/
 	
 }
 
@@ -269,12 +269,13 @@ PLUGIN_API void LoadFile(int uniqueId, char* url){
 /**
 * Keyboard wrapping
 **/
-PLUGIN_API void InjectKeyboard(int uniqueId, int msg, int wParam, long lParam){
-	AwesomiumWindow* pWindow = getWindow(uniqueId);
-	if (pWindow)
-		pWindow->m_webView->injectKeyboardEvent(Awesomium::WebKeyboardEvent(msg,wParam,lParam));
-	
-}
+//PLUGIN_API void InjectKeyboard(int uniqueId, int msg, int wParam, long lParam){
+//	AwesomiumWindow* pWindow = getWindow(uniqueId);
+//	if (pWindow)		
+//		pWindow->m_webView->get
+//		pWindow->m_webView->injectKeyboardEvent(msg,wParam,lParam);
+//	
+//}
 
 /**
 * wrap mouse functions function

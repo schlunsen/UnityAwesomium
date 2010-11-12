@@ -2,18 +2,38 @@
 	This file is a part of Awesomium, a library that makes it easy for 
 	developers to embed web-content in their applications.
 
-	Copyright (C) 2009 Khrona. All rights reserved. Awesomium is a trademark of Khrona.
+	Copyright (C) 2009 Adam J. Simmons
+
+	Project Website:
+	<http://princeofcode.com/awesomium.php>
+
+	This library is free software; you can redistribute it and/or
+	modify it under the terms of the GNU Lesser General Public
+	License as published by the Free Software Foundation; either
+	version 2.1 of the License, or (at your option) any later version.
+
+	This library is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+	Lesser General Public License for more details.
+
+	You should have received a copy of the GNU Lesser General Public
+	License along with this library; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
+	02110-1301 USA
 */
 
 #ifndef __WEBVIEW_H__
 #define __WEBVIEW_H__
 
 #include "WebViewListener.h"
-#include "WebKeyboardEvent.h"
 #include <map>
 
 #if defined(_WIN32)
+#include <windows.h>
 #pragma warning( disable: 4251 )
+#elif defined(__APPLE__)
+class NSEvent;
 #endif
 
 class WebViewWaitState;
@@ -21,7 +41,6 @@ class WebViewProxy;
 class JSValueFutureImpl;
 class FutureValueCallback;
 class CheckKeyboardFocusCallback;
-class WindowOpenCallback;
 namespace base { class Thread; }
 class LockImpl;
 namespace WebViewEvents { class InvokeCallback; }
@@ -41,26 +60,6 @@ enum MouseButton {
 };
 
 /**
-* URL Filtering mode enumerations, used by WebView::setURLFilteringMode
-*/
-enum URLFilteringMode {
-	/**
-	* All resource requests and page navigations are ALLOWED 
-	* except those that match the URL filters specified.
-	*/
-	UFM_BLACKLIST, 
-
-	/**
-	* All resource requests and page navigations are DENIED 
-	* except those that match the URL filters specified.
-	*/
-	UFM_WHITELIST,
-
-	// No filtering
-	UFM_NONE
-};
-
-/**
 * A simple rectangle class, used with WebView::render
 */
 struct _OSMExport Rect {
@@ -70,11 +69,6 @@ struct _OSMExport Rect {
 	Rect(int x, int y, int width, int height);
 	bool isEmpty() const;
 };
-
-/**
-* A map of string key/values representing an HTTP header.
-*/
-typedef std::map<std::string, std::string> HeaderDefinition;
 
 /**
 * A WebView is essentially a single instance of a web-browser (created via the WebCore singleton)
@@ -96,7 +90,7 @@ public:
 	* Registers a WebViewListener to call upon various events (such as load completions, callbacks, title receptions,
 	* cursor changes, etc).
 	*
-	* @param	listener	The WebViewListener to register or NULL to clear any current registrations.
+	* @param	listener	The WebViewListener to register. Or, you can pass '0' to undo any current registrations.
 	*/
 	void setListener(WebViewListener* listener);
 
@@ -121,41 +115,16 @@ public:
 	void loadURL(const std::string& url, const std::wstring& frameName = L"", const std::string& username = "", const std::string& password = "");
 
 	/**
-	* Loads a URL into the WebView asynchronously.
-	*
-	* @param	url	The URL to load.
-	*
-	* @param	frameName	Optional, the name of the frame to load the URL in; leave this blank to load in the main frame.
-	*
-	* @param	username	Optional, if the URL requires authentication, the username to authorize as.
-	*
-	* @param	password	Optional, if the URL requires authentication, the password to use.
-	*/
-	void loadURL(const std::wstring& url, const std::wstring& frameName = L"", const std::string& username = "", const std::string& password = "");
-
-	/**
 	* Loads a string of HTML into the WebView asynchronously.
 	*
-	* @param	html	The HTML string (ASCII) to load.
+	* @param	html	The HTML string to load.
 	*
 	* @param	frameName	Optional, the name of the frame to load the HTML in; leave this blank to load in the main frame.
 	*
 	* @note	The base directory (specified via WebCore::setBaseDirectory) will be used to resolve
-	*		relative URLs/resources (such as images, links, etc).
+	*		relative URL's/resources (such as images, links, etc).
 	*/
 	void loadHTML(const std::string& html, const std::wstring& frameName = L"");
-
-	/**
-	* Loads a string of HTML into the WebView asynchronously.
-	*
-	* @param	html	The HTML string (wide) to load.
-	*
-	* @param	frameName	Optional, the name of the frame to load the HTML in; leave this blank to load in the main frame.
-	*
-	* @note	The base directory (specified via WebCore::setBaseDirectory) will be used to resolve
-	*		relative URLs/resources (such as images, links, etc).
-	*/
-	void loadHTML(const std::wstring& html, const std::wstring& frameName = L"");
 
 	/**
 	* Loads a local file into the WebView asynchronously.
@@ -184,25 +153,16 @@ public:
 	/**
 	* Executes a string of Javascript in the context of the current page asynchronously.
 	*
-	* @param	javascript	The ASCII string of Javascript to execute.
+	* @param	javascript	The string of Javascript to execute.
 	*
 	* @param	frameName	Optional, the name of the frame to execute in; leave this blank to execute in the main frame.
 	*/
 	void executeJavascript(const std::string& javascript, const std::wstring& frameName = L"");
 
 	/**
-	* Executes a string of Javascript in the context of the current page asynchronously.
-	*
-	* @param	javascript	The wide string of Javascript to execute.
-	*
-	* @param	frameName	Optional, the name of the frame to execute in; leave this blank to execute in the main frame.
-	*/
-	void executeJavascript(const std::wstring& javascript, const std::wstring& frameName = L"");
-
-	/**
 	* Executes a string of Javascript in the context of the current page asynchronously with a result.
 	*
-	* @param	javascript	The ASCII string of Javascript to execute.
+	* @param	javascript	The string of Javascript to execute.
 	*
 	* @param	frameName	Optional, the name of the frame to execute in; leave this blank to execute in the main frame.
 	*
@@ -212,73 +172,34 @@ public:
 	Awesomium::FutureJSValue executeJavascriptWithResult(const std::string& javascript, const std::wstring& frameName = L"");
 
 	/**
-	* Executes a string of Javascript in the context of the current page asynchronously with a result.
+	* Sets a global 'Client' property that can be accessed via Javascript from
+	* within all pages loaded into this web-view.
 	*
-	* @param	javascript	The wide string of Javascript to execute.
-	*
-	* @param	frameName	Optional, the name of the frame to execute in; leave this blank to execute in the main frame.
-	*
-	* @return	Returns a 'FutureJSValue' which is basically an 'IOU' for the future JSValue result.
-	*			You can obtain the actual result via FutureJSValue::get later.
-	*/
-	Awesomium::FutureJSValue executeJavascriptWithResult(const std::wstring& javascript, const std::wstring& frameName = L"");
-
-	/**
-	* Call a certain function defined in Javascript directly.
-	*
-	* @param	object	The name of the object that contains the function, pass an empty string if the function
-	*					is defined in the global scope.
-	*
-	* @param	function	The name of the function.
-	*
-	* @param	args	The arguments to pass to the function.
-	*
-	* @param	frameName	Optional, the name of the frame to execute in; leave this blank to execute in the main frame.
-	*/
-	void callJavascriptFunction(const std::wstring& object, const std::wstring& function, const JSArguments& args, const std::wstring& frameName = L"");
-
-	/**
-	* Creates a new global Javascript object that will persist throughout the lifetime of this WebView. This object is
-	* managed directly by Awesomium and so you can modify its properties and bind callback functions via WebView::setObjectProperty
-	* and WebView::setObjectCallback, respectively.
-	*
-	* @param	objectName	The name of the object.
-	*/
-	void createObject(const std::wstring& objectName);
-
-	/**
-	* Destroys a Javascript object previously created by WebView::createObject.
-	*
-	* @param	objectName	The name of the object to destroy.
-	*/
-	void destroyObject(const std::wstring& objectName);
-
-	/**
-	* Sets a property of a Javascript object previously created by WebView::createObject.
-	*
-	* @param	objectName	The name of the Javascript object.
-	*
-	* @param	propName	The name of the property.
-	*
+	* @param	name	The name of the property.
 	* @param	value	The javascript-value of the property.
+	*
+	* @note	You can access all properties you set via the 'Client' object using Javascript. For example,
+	*		if you set the property with a name of 'color' and a value of 'blue', you could access
+	*		this from the page using Javascript: document.write("The color is " + Client.color);
 	*/
-	void setObjectProperty(const std::wstring& objectName, const std::wstring& propName, const JSValue& value);
+	void setProperty(const std::string& name, const JSValue& value);
 
 	/**
-	* Sets a callback function of a Javascript object previously created by WebView::createObject. This is very useful
-	* for passing events from Javascript to C++. To receive notification of the callback, a WebViewListener should 
-	* be registered (see WebView::setListener and WebViewListener::onCallback).
+	* Registers a global 'Client' callback that can be invoked via Javascript from
+	* within all pages loaded into this view. You will need to register a WebViewListener
+	* (WebView::setListener) to receieve notification of callbacks (WebViewListener::onCallback).
 	*
-	* @param	objectName	The name of the Javascript object.
+	* @param	name	The name of the callback. You can invoke the callback in Javascript
+	*					as: Client.your_name_here(arg1, arg2, ...);
 	*
-	* @param	callbackName	The name of the callback function.
+	* @note	In the future, it won't be necessary to register the callback name in advance.
 	*/
-	void setObjectCallback(const std::wstring& objectName, const std::wstring& callbackName);
+	void setCallback(const std::string& name);
 
 	/**
-	* Returns whether or not the WebView is dirty and needs to be re-rendered via WebView::render.
+	* Returns whether or not the current web-view is dirty and needs to be re-rendered.
 	*
-	* @return	If the WebView is dirty, returns true, otherwise returns false.
+	* @return	If the web-view is dirty, returns true, otherwise returns false.
 	*/
 	bool isDirty();
 	
@@ -324,16 +245,33 @@ public:
 	/**
 	* Injects a mouse-wheel event.
 	*
-	* @param	scrollAmount	The relative amount of pixels to scroll by.
+	* @param	scrollAmount	The amount of pixels to scroll by.
 	*/
 	void injectMouseWheel(int scrollAmount);
 
+#if defined(_WIN32)
 	/**
-	* Injects a keyboard event. See WebKeyboardEvent.h for more information.
+	* Injects a keyboard event. [Windows]
 	*
-	* @param	keyboardEvent	The keyboard event to inject.
+	* @note	The native Windows keyboard message should be passed, valid message types include:
+	*		- WM_KEYDOWN
+	*		- WM_KEYUP
+	*		- WM_SYSKEYDOWN
+	*		- WM_SYSKEYUP
+	*		- WM_CHAR
+	*		- WM_IMECHAR
+	*		- WM_SYSCHAR
 	*/
-	void injectKeyboardEvent(const WebKeyboardEvent& keyboardEvent);
+	void injectKeyboardEvent(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam);
+
+#elif defined(__APPLE__)
+	/**
+	* Injects a keyboard event. [Mac OSX]
+	*
+	* @note	The native OSX keyboard event should be passed.
+	*/
+	void injectKeyboardEvent(NSEvent* keyboardEvent);
+#endif
 
 	/**
 	* Invokes a 'cut' action using the system clipboard.
@@ -412,79 +350,6 @@ public:
 	*/
 	void setTransparent(bool isTransparent);
 
-	/**
-	* Sets the current URL Filtering Mode (default is UFM_NONE).
-	* See URLFilteringMode for more information on the modes.
-	*
-	* @param	mode	The URL filtering mode to use.
-	*/
-	void setURLFilteringMode(URLFilteringMode mode);
-
-	/**
-	* Adds a new URL Filter rule.
-	*
-	* @param	filter	A string with optional wildcards that describes a certain URL.
-	*
-	* @note		For example, to match all URLs from the domain "google.com", your filter string 
-	*			might be: http://google.com/*
-	*
-	* @note		You may also use the "local://" scheme prefix to describe the URL to the base
-	*			directory (set via WebCore::setBaseDirectory).
-	*/
-	void addURLFilter(const std::wstring& filter);
-
-	/**
-	* Clears all URL Filter rules.
-	*/
-	void clearAllURLFilters();
-	
-	/**
-	* Defines a new Header Definition or updates it if it already exists.
-	*
-	* @param	name	The unique name of the Header Definition; this is used to refer to it later 
-	*					in WebView::addHeaderRewriteRule and WebView::removeHeaderRewriteRulesByDefinitionName.
-	*
-	* @param	definition	The header definition, a map of key/values representing an HTTP header.
-	*/
-	void setHeaderDefinition(const std::string& name, const Awesomium::HeaderDefinition& definition);
-
-	/**
-	* Adds a new a header re-write rule. All requests whose URL matches the specified rule will have its 
-	* HTTP headers re-written with the specified header definition before sending it to the server.
-	*
-	* @param	rule	A wide string with optional wildcards (*, ?) that matches the URL(s) that will
-	*					have its headers re-written with the specified header definition.
-	*
-	* @param	name	The name of the header definition (specified in WebView::setHeaderDefinition).
-	*
-	* @note		The case where a URL is matched by multiple rules is unsupported, only the first match will be used.
-	*/
-	void addHeaderRewriteRule(const std::wstring& rule, const std::string& name);
-
-	/**
-	* Removes a header re-write rule from this WebView.
-	*
-	* @param	rule	The rule to remove (should match the string specified in WebView::addHeaderRewriteRule exactly).
-	*/
-	void removeHeaderRewriteRule(const std::wstring& rule);
-
-	/**
-	* Removes all header re-write rules that are using a certain header definition.
-	*
-	* @param	name	The name of the header definition (specified in WebView::setHeaderDefinition). If you
-	*					specify an empty string, this will remove ALL header re-write rules.
-	*/
-	void removeHeaderRewriteRulesByDefinitionName(const std::string& name);
-
-	/**
-	* Sets whether or not external links (links that normally would open in a new window) should
-	* be automatically be opened in the same frame. The default behavior is enabled. You can handle
-	* external links yourself via WebViewListener::onOpenExternalLink.
-	*
-	* @param	isEnabled	Whether or not external links will be automatically opened in the calling frame.
-	*/
-	void setOpensExternalLinksInCallingFrame(bool isEnabled);
-
 protected:
 	WebView(int width, int height, bool isTransparent, bool enableAsyncRendering, int maxAsyncRenderPerSec, base::Thread* coreThread);
 	~WebView();
@@ -501,7 +366,6 @@ protected:
 	void handleFutureJSValueCallback(const Awesomium::JSArguments& args);
 	void nullifyFutureJSValueCallbacks();
 	void handleCheckKeyboardFocus(bool isFocused);
-	void openExternalLink(const std::string& url, const std::wstring& source);
 
 	base::Thread* coreThread;
 	WebViewProxy* viewProxy;
@@ -518,7 +382,6 @@ protected:
 	friend class ::WebViewProxy;
 	friend class ::FutureValueCallback;
 	friend class ::CheckKeyboardFocusCallback;
-	friend class ::WindowOpenCallback;
 };
 
 }

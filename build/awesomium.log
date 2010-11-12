@@ -1,63 +1,95 @@
-[1111/232648:INFO:WebCore.cpp(74)] Creating the core thread.
-[1111/232648:INFO:WebCore.cpp(84)] Creating the WebCore.
-[1111/232648:INFO:WebCoreProxy.cpp(45)] ICU successfully initialized.
-[1111/232648:INFO:RequestContext.cpp(68)] An invalid or empty cookie path was specified, cookies will be lost on program exit.
-[1111/232648:INFO:RequestContext.cpp(111)] An invalid or empty cache path was specified, cache will be lost on program exit.
-[1111/232648:INFO:WebCoreProxy.cpp(202)] The WebCore is now online.
-[1111/232648:INFO:WebView.cpp(68)] A new WebView has been created.
-[1111/232648:INFO:WebViewProxy.cpp(150)] WebViewProxy[0] has been created.
-[1111/232648:INFO:proxy_service.cc(619)] New proxy configuration was loaded:
-{
-  auto_detect: 0
-  pac_url: 
-  proxy_rules:
-  {
-    type: TYPE_NO_RULES
-    single_proxy: 
-    proxy_for_http: 
-    proxy_for_https: 
-    proxy_for_ftp: 
-  }
-  proxy_bypass_local_names: 0
-  proxy_bypass_list:
-  id: 1
-}
-[1111/232658:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=0
-[1111/232658:INFO:plugin_lib.cc(115)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): result=0
-[1111/232658:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232659:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232659:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232659:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232659:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232659:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232659:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232659:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232659:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232659:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232659:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232659:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232659:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232659:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232659:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232659:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232659:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232659:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232659:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232659:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232659:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232659:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232659:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232740:INFO:WindowlessPlugin.h(61)] A WindowlessPlugin has been destroyed
-[1111/232743:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
-[1111/232743:INFO:WindowlessPlugin.h(95)] A WindowlessPlugin has been created
+[1112/112733:INFO:WebCore.cpp(75)] Creating the core thread.
+[1112/112733:INFO:WebCore.cpp(85)] Creating the WebCore.
+[1112/112733:INFO:WebCoreProxy.cpp(53)] ICU successfully initialized.
+[1112/112733:INFO:WebView.cpp(86)] A new WebView has been created.
+[1112/112733:INFO:WebCoreProxy.cpp(182)] The WebCore is now online.
+[1112/112733:INFO:WebViewProxy.cpp(90)] A new WebViewProxy has been created.
+[1112/112735:ERROR:proxy_resolver_winhttp.cc(94)] WinHttpGetProxyForUrl failed: 0
+[1112/112735:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: http://www.google.dk/, Status Code: 200, Mime-Type: text/html, Frame Name: 
+[1112/112737:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: http://maps.google.dk/maps?hl=da&tab=wl, Status Code: 200, Mime-Type: text/html, Frame Name: 
+[1112/112738:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: http://maps.google.dk/mapfiles/home3.html, Status Code: 200, Mime-Type: text/html, Frame Name: vp
+[1112/112738:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: about:blank, Status Code: 0, Mime-Type: text/html, Frame Name: <!--framePath //<!--frame1-->-->
+[1112/112744:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: https://www.google.com/accounts/ServiceLogin?service=mail&passive=true&rm=false&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fhl%3Dda%26tab%3Dlm%26ui%3Dhtml%26zy%3Dl&bsv=1eic6yu9oa4y3&scc=1&ltmpl=default&ltmplcache=2&hl=da, Status Code: 200, Mime-Type: text/html, Frame Name: 
+[1112/112750:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: http://www.dr.dk/, Status Code: 200, Mime-Type: text/html, Frame Name: 
+[1112/112750:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=0
+[1112/112750:INFO:plugin_lib.cc(115)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): result=0
+[1112/112750:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/112750:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/112750:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/112750:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/112750:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/112750:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/112750:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/112750:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/112750:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/112750:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/112750:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/112750:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/112750:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/112750:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/112750:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/112750:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/112750:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/112750:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/112750:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/112750:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/112750:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/112751:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/112751:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120048:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: file:///html/test.html, Status Code: 0, Mime-Type: text/html, Frame Name: 
+[1112/120054:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: http://www.dr.dk/, Status Code: 200, Mime-Type: text/html, Frame Name: 
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120055:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120055:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120101:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: http://www.dr.dk/NU/player/#/dr1-dokumentaren/2744, Status Code: 200, Mime-Type: text/html, Frame Name: 
+[1112/120102:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: about:blank, Status Code: 0, Mime-Type: text/html, Frame Name: _atssh356
+[1112/120102:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1112/120102:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1112/120103:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: http://s7.addthis.com/static/r07/sh27.html#cb=0&ab=-&dh=www.dr.dk&dr=http%3A%2F%2Fwww.dr.dk%2F&du=http%3A%2F%2Fwww.dr.dk%2FNU%2Fplayer%2F%23%2Fdr1-dokumentaren%2F2744&dt=DR%20NU&inst=1&lng=da&pc=men&pub=drdk&ssl=0&sid=4cdd1e6ed1e2e89c&srd=1&srf=0.02&srp=0.2&srx=0&ver=250&xck=0&rev=84906&xd=1, Status Code: 200, Mime-Type: text/html, Frame Name: _atssh356
+[1112/120133:INFO:WindowlessPlugin.h(73)] A WindowlessPlugin has been destroyed
+[1112/120133:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: file:///html/test.html, Status Code: 0, Mime-Type: text/html, Frame Name: 

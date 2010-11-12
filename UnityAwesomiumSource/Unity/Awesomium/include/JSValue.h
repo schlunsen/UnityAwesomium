@@ -2,7 +2,25 @@
 	This file is a part of Awesomium, a library that makes it easy for 
 	developers to embed web-content in their applications.
 
-	Copyright (C) 2009 Khrona. All rights reserved. Awesomium is a trademark of Khrona.
+	Copyright (C) 2009 Adam J. Simmons
+
+	Project Website:
+	<http://princeofcode.com/awesomium.php>
+
+	This library is free software; you can redistribute it and/or
+	modify it under the terms of the GNU Lesser General Public
+	License as published by the Free Software Foundation; either
+	version 2.1 of the License, or (at your option) any later version.
+
+	This library is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+	Lesser General Public License for more details.
+
+	You should have received a copy of the GNU Lesser General Public
+	License along with this library; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
+	02110-1301 USA
 */
 
 #ifndef __JSVALUE_H__
@@ -10,37 +28,37 @@
 
 #include <string>
 #include <vector>
-#include <map>
 #include "PlatformUtils.h"
 
-namespace Impl { struct VariantValue; }
+namespace Impl {
+
+typedef enum {
+    VariantType_NULL,
+	VariantType_BOOLEAN,
+	VariantType_INTEGER,
+	VariantType_DOUBLE,
+	VariantType_STRING
+} VariantType;
+
+struct VariantValue
+{
+	VariantType type;
+
+	std::string stringValue;
+
+	union {
+		bool booleanValue;
+		int integerValue;
+		double doubleValue;
+	} numericValue;
+};
+
+}
 
 namespace Awesomium 
 {
 
 class WebView;
-
-class _OSMExport JSIdentifier
-{
-public:
-	JSIdentifier(const char* value);
-	JSIdentifier(const std::string& value);
-	JSIdentifier(const wchar_t* value);
-	JSIdentifier(const std::wstring& value);
-	JSIdentifier(int value);
-	JSIdentifier(const JSIdentifier& original);
-	~JSIdentifier();
-	bool operator<(const JSIdentifier& rhs) const;
-
-	bool isString() const;
-
-	const std::wstring& getString() const;
-	int getInteger() const;
-
-protected:
-	union { int intValue; std::wstring* strValue; } data;
-	bool isStringData;
-};
 
 /**
 * JSValue is a class that represents a Javascript value. It can be initialized from
@@ -48,12 +66,8 @@ protected:
 */
 class _OSMExport JSValue
 {
-	Impl::VariantValue* varValue;
+	Impl::VariantValue varValue;
 public:
-
-	typedef std::map<std::wstring, JSValue> Object;
-	typedef std::vector<JSValue> Array;
-
 	/// Creates a null JSValue.
 	JSValue();
 
@@ -66,29 +80,11 @@ public:
 	/// Creates a JSValue initialized with a double.
 	JSValue(double value);
 
-	/// Creates a JSValue initialized with an ASCII string.
+	/// Creates a JSValue initialized with a string.
 	JSValue(const char* value);
 
-	/// Creates a JSValue initialized with an ASCII string.
+	/// Creates a JSValue initialized with a string.
 	JSValue(const std::string& value);
-
-	/// Creates a JSValue initialized with a wide string.
-	JSValue(const wchar_t* value);
-
-	/// Creates a JSValue initialized with a wide string.
-	JSValue(const std::wstring& value);
-
-	/// Creates a JSValue initialized with an object.
-	JSValue(const Object& value);
-
-	/// Creates a JSValue initialized with an array.
-	JSValue(const Array& value);
-
-	JSValue(const JSValue& original);
-
-	~JSValue();
-
-	JSValue& operator=(const JSValue& rhs);
 
 	/// Returns whether or not this JSValue is a boolean.
 	bool isBoolean() const;
@@ -105,17 +101,16 @@ public:
 	/// Returns whether or not this JSValue is a string.
 	bool isString() const;
 
-	/// Returns whether or not this JSValue is an array.
-	bool isArray() const;
-
-	/// Returns whether or not this JSValue is an object.
-	bool isObject() const;
-
 	/// Returns whether or not this JSValue is null.
 	bool isNull() const;
 
-	/// Returns this JSValue as a wide string (converting if necessary).
-	const std::wstring& toString() const;
+	/**
+	* Returns this JSValue as a string (converting if necessary).
+	*
+	* @note	If this JSValue is not a string, the returned reference
+	*		is only valid until the next call to JSValue::toString.
+	*/
+	const std::string& toString() const;
 
 	/// Returns this JSValue as an integer (converting if necessary).
 	int toInteger() const;
@@ -125,18 +120,6 @@ public:
 
 	/// Returns this JSValue as a boolean (converting if necessary).
 	bool toBoolean() const;
-
-	/// Gets a reference to this JSValue's array value (will assert if not an array type)
-	Array& getArray();
-
-	/// Gets a constant reference to this JSValue's array value (will assert if not an array type)
-	const Array& getArray() const;
-
-	/// Gets a reference to this JSValue's object value (will assert if not an object type)
-	Object& getObject();
-
-	/// Gets a constant reference to this JSValue's object value (will assert if not an object type)
-	const Object& getObject() const;
 };
 
 typedef std::vector<JSValue> JSArguments;

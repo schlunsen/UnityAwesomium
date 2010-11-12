@@ -2,7 +2,25 @@
 	This file is a part of Awesomium, a library that makes it easy for 
 	developers to embed web-content in their applications.
 
-	Copyright (C) 2009 Khrona. All rights reserved. Awesomium is a trademark of Khrona.
+	Copyright (C) 2009 Adam J. Simmons
+
+	Project Website:
+	<http://princeofcode.com/awesomium.php>
+
+	This library is free software; you can redistribute it and/or
+	modify it under the terms of the GNU Lesser General Public
+	License as published by the Free Software Foundation; either
+	version 2.1 of the License, or (at your option) any later version.
+
+	This library is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+	Lesser General Public License for more details.
+
+	You should have received a copy of the GNU Lesser General Public
+	License along with this library; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 
+	02110-1301 USA
 */
 
 #ifndef __WEBCORE_H__
@@ -53,30 +71,13 @@ public:
 	* Instantiates the WebCore singleton (you can access it later with
 	* WebCore::Get or GetPointer).
 	*
-	* @param	cachePath	An absolute path to the directory that will be used to store the cache.
-	*						If an empty string is specified, the cache will not persist between sessions.
+	* @param	level	The logging level to use (default is LOG_NORMAL).
 	*
-	* @param	cookiePath	An absolute path to the directory that will be used to store cookies.
-	*						If an empty string is specified, cookies will not persist between sessions.
-	*
-	* @param	pluginPath	An absolute path that will be included in the search for plugins. This is useful
-	*						if you wish to bundle certain plugins with your application.
-	*
-	* @param	logPath		The path to store the awesomium.log. If none is specified, the log will be stored in
-	*						the working directory.
-	*
-	* @param	level		The logging level to use (default is LOG_NORMAL).
-	*
-	* @param	enablePlugins	Whether or not to enable embedded plugins. (default is FALSE) Note that the Flash
-	*							and Silverlight plugins are only fully-supported on the Windows platform at this time.
+	* @param	enablePlugins	Whether or not to enable embedded plugins.
 	*
 	* @param	pixelFormat		The pixel-format/byte-ordering to use when rendering WebViews.
-	*
-	* @param	userAgentOverride	The user agent string that will override the default. Leave empty to use the default user agent.
 	*/
-	WebCore(const std::wstring& cachePath = L"", const std::wstring& cookiePath = L"", const std::wstring& pluginPath = L"", 
-		const std::wstring& logPath = L"", LogLevel level = LOG_NORMAL, bool enablePlugins = false, PixelFormat pixelFormat = PF_BGRA,
-		const std::string& userAgentOverride = "");
+	WebCore(LogLevel level = LOG_NORMAL, bool enablePlugins = true, PixelFormat pixelFormat = PF_BGRA);
 
 	/**
 	* Destroys the WebCore singleton. (Also destroys any lingering WebViews)
@@ -104,18 +105,9 @@ public:
 	*
 	* @param	baseDirectory	The absolute path to your base directory. The base directory is a 
 	*							location that holds all of your local assets. It will be used for 
-	*							WebView::loadFile and WebView::loadHTML (to resolve relative URLs).
+	*							WebView::loadFile and WebView::loadHTML (to resolve relative URL's).
 	*/
 	void setBaseDirectory(const std::string& baseDirectory);
-
-	/**
-	* Sets the base directory.
-	*
-	* @param	baseDirectory	The absolute path to your base directory. The base directory is a 
-	*							location that holds all of your local assets. It will be used for 
-	*							WebView::loadFile and WebView::loadHTML (to resolve relative URLs).
-	*/
-	void setBaseDirectory(const std::wstring& baseDirectory);
 
 	/**
 	* Creates a new WebView.
@@ -158,7 +150,7 @@ public:
 	*
 	* @return	Returns the current base directory.
 	*/
-	const std::wstring& getBaseDirectory() const;
+	const std::string& getBaseDirectory() const;
 
 	/**
 	* Retrieves the pixel format being used.
@@ -179,12 +171,6 @@ public:
 	*		call WebCore::pause right before handling the
 	*		message loop in your main thread (usually via
 	*		SDL_PollEvents) and immediately call resume after.
-	*		Note that this method is not foolproof and is
-	*		quite experimental. A much better method has since
-	*		been discovered but to implement it will require 
-	*		a major change to the current architecture of
-	*		Awesomium. This architecture rehaul will be
-	*		conducted in an upcoming release.
 	*/
 	void pause();
 	
@@ -211,7 +197,7 @@ protected:
 	std::vector<WebView*> views;
 	std::queue<WebViewEvent*> eventQueue;
 	std::map<int, std::string> customResponsePageMap;
-	std::wstring baseDirectory;
+	std::string baseDirectory;
 	bool logOpen;
 	bool pluginsEnabled;
 	const PixelFormat pixelFormat;
