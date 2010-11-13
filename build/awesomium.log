@@ -1,7 +1,23 @@
-[1113/083027:INFO:WebCore.cpp(75)] Creating the core thread.
-[1113/083027:INFO:WebCore.cpp(85)] Creating the WebCore.
-[1113/083027:INFO:WebCoreProxy.cpp(182)] The WebCore is now online.
-[1113/083027:INFO:WebView.cpp(86)] A new WebView has been created.
-[1113/083027:INFO:WebViewProxy.cpp(90)] A new WebViewProxy has been created.
-[1113/083027:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: http://www.google.dk/, Status Code: 200, Mime-Type: text/html, Frame Name: 
-[1113/083031:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: http://www.dr.dk/, Status Code: 200, Mime-Type: text/html, Frame Name: 
+[1113/091040:INFO:WebCore.cpp(75)] Creating the core thread.
+[1113/091040:INFO:WebCore.cpp(85)] Creating the WebCore.
+[1113/091040:INFO:WebCoreProxy.cpp(182)] The WebCore is now online.
+[1113/091040:INFO:WebView.cpp(86)] A new WebView has been created.
+[1113/091040:INFO:WebViewProxy.cpp(90)] A new WebViewProxy has been created.
+[1113/091040:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: http://www.google.dk/, Status Code: 200, Mime-Type: text/html, Frame Name: 
+[1113/091053:INFO:WebViewProxy.cpp(744)] Committed Load for Frame. URL: http://www.dr.dk/, Status Code: 200, Mime-Type: text/html, Frame Name: 
+[1113/091054:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1113/091054:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1113/091054:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1113/091054:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1113/091054:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1113/091054:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1113/091054:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1113/091054:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1113/091054:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1113/091054:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1113/091054:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1113/091054:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1113/091054:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1113/091054:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
+[1113/091054:INFO:plugin_lib.cc(97)] PluginLib::NP_Initialize(C:\Windows\SysWOW64\Macromed\Flash\NPSWF32.dll): initialized=1
+[1113/091054:INFO:WindowlessPlugin.h(102)] A WindowlessPlugin has been created
